@@ -1,0 +1,291 @@
+# WECONN3CT.APP WEBSITE - CURSOR RULES
+
+## PROJECT TYPE
+WECONN3CT Softwareunternehmen Website mit Gamma Design-System
+
+## BRAND IDENTITY
+- **Firmenname:** WECONN3CT.App (immer mit .App)
+- **Tagline:** "Software made in Germany, built for the world"
+- **Slogan:** "Wir verwandeln Ideen in digitale Erlebnisse"
+- **Sprache:** Deutsch (Du-Form für Kundenkontakt)
+- **Standort:** Bad Honnef, Deutschland
+
+## CONTENT RULES (KRITISCH!)
+
+### MUSS in jeder Seite sein:
+✅ WECONN3CT Logo/Branding
+✅ Deutsche Texte (keine englischen Headlines außer Tagline)
+✅ "Made in Germany" Badge/Erwähnung
+✅ KI/AI-Bezug wo relevant
+✅ CTAs zu #kontakt Section
+✅ Professional aber zugänglich (keine Corporate-Kälte)
+
+### VERBOTEN:
+❌ Englische Headlines (außer Tagline)
+❌ Sie-Form (immer Du-Form)
+❌ Zu technisch/kompliziert
+❌ Generische Stock-Phrasen
+❌ Gamma-Beispiel-Content verwenden
+
+## SERVICES (6 Core Services)
+Immer in dieser Reihenfolge wenn alle genannt:
+1. 📱 App-Entwicklung
+2. 🌐 Website-Entwicklung
+3. ⚙️ Software-Lösungen
+4. 🤖 KI-Integration
+5. 🎨 UX/UI Design
+6. 🔧 Wartung & Support
+
+## TEAM (3 Mitglieder)
+- **Leonardo Braun** - Projekt- & Designmanagement
+- **Jan Beek** - Programmierung
+- **Mentor Sadiku** - Projektabgabe & Wartung
+
+## STATS (immer verwenden)
+- **15** Mitarbeiter
+- **4** Teams
+- **8** Partner
+- **12** Projekte
+
+## DESIGN SYSTEM
+Verwende das Gamma Design-System (unverändert):
+- CSS-Dateien: variables.css → base.css → components.css → utilities.css
+- Alle Gamma-Farben, Komponenten, Utilities
+
+## COLOR USAGE FÜR WECONN3CT
+- **Primary Blue (#2E3EE8):** CTAs, wichtige Elemente
+- **Periwinkle/Glacier:** Backgrounds für Sections
+- **Rocket Fire (#FF4E3E):** Wichtige CTAs wie "Kostenloses Erstgespräch"
+- Immer hoher Kontrast (Light + Deep Tones)
+
+## NAVIGATION STRUCTURE
+Immer diese Navigation:
+```html
+<nav class="navbar" id="navbar">
+    <a href="#" class="navbar-logo">WECONN3CT</a>
+    <ul class="navbar-menu">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#standort">Standort</a></li>
+        <li><a href="#kontakt" class="btn btn-primary">Termin buchen</a></li>
+    </ul>
+</nav>
+```
+
+## HERO SECTION PATTERN
+```html
+<section class="hero bg-gradient-secondary">
+    <div class="container">
+        <div class="hero-content">
+            <div class="badge mb-4">🇩🇪 Made in Germany</div>
+            <h1 class="hero-title">[Deutsche Headline]</h1>
+            <p class="hero-subtitle">[Deutsche Beschreibung]</p>
+            <div class="hero-cta">
+                <a href="#kontakt" class="btn btn-primary btn-lg">Kostenloses Erstgespräch</a>
+                <a href="#services" class="btn btn-outline btn-lg">Unsere Services</a>
+            </div>
+        </div>
+    </div>
+</section>
+```
+
+## CALL-TO-ACTION REGELN
+
+### Primary CTAs (verwende diese):
+- "Kostenloses Erstgespräch (buchen)"
+- "Jetzt anfragen"
+- "Termin buchen"
+- "Projekt starten"
+
+### Secondary CTAs:
+- "Mehr erfahren"
+- "Unsere Services"
+- "E-Mail senden"
+
+### CTA Button Classes:
+- Wichtigste CTA: `btn btn-primary btn-lg` oder `btn btn-accent btn-xl`
+- Sekundäre CTA: `btn btn-outline btn-lg`
+- Alle CTAs zeigen auf `#kontakt` Section
+
+## SERVICE CARDS PATTERN
+```html
+<div class="card animate-fade-in-up">
+    <div class="card-header">
+        <div class="text-4xl mb-3">[Emoji]</div>
+        <h3 class="card-title">[Service Name]</h3>
+    </div>
+    <div class="card-body">
+        <p>[Deutsche Beschreibung mit Benefit]</p>
+    </div>
+</div>
+```
+
+## TEAM CARDS PATTERN
+```html
+<div class="card">
+    <div class="flex items-center gap-4 mb-4">
+        <div class="avatar avatar-xl">
+            <img src="..." alt="[Name]">
+        </div>
+        <div>
+            <div class="font-bold text-xl">[Name]</div>
+            <div class="text-sm text-muted">[Position]</div>
+        </div>
+    </div>
+    <p class="text-muted">[Deutsche Beschreibung]</p>
+</div>
+```
+
+## USP/WARUM WECONN3CT (3 Gründe)
+```
+⚡ Höchstgeschwindigkeit
+   - KI-gestützte Prozesse
+   - Rekordzeit Development
+
+🇩🇪 Made in Germany
+   - Deutsche Qualitätsstandards
+   - DSGVO-konform
+   - Verlässlich
+
+🎯 Full-Service
+   - Design, Code, Testing, Support
+   - Alles aus einer Hand
+```
+
+## STANDORT SECTION (Bad Honnef)
+Immer erwähnen:
+- "Rheinisches Nizza"
+- Am Rhein gelegen
+- Blick auf Siebengebirge
+- Kreatives Umfeld + moderne Infrastruktur
+
+## VISION/MISSION
+Kernaussage:
+"Digitale Innovation für jeden erreichbar machen"
+- Jede Idee verdient eine Chance
+- KI-gestützte Entwicklung
+- Speed & Qualität kombiniert
+
+## FOOTER PATTERN
+```html
+<footer class="py-12 bg-black text-white">
+    <div class="container">
+        <!-- 4 Spalten: Services, Unternehmen, Kontakt, Legal -->
+        <div class="text-muted">
+            © 2025 WECONN3CT.App – Software made in Germany, built for the world
+        </div>
+    </div>
+</footer>
+```
+
+## ICON/EMOJI VERWENDUNG
+Konsistent verwenden:
+- 📱 App-Entwicklung
+- 🌐 Website-Entwicklung
+- ⚙️ Software-Lösungen
+- 🤖 KI/AI
+- 🎨 Design
+- 🔧 Support/Wartung
+- 🇩🇪 Made in Germany
+- ⚡ Speed/Geschwindigkeit
+- 🎯 Präzision/Full-Service
+- 🏞️ Bad Honnef/Standort
+
+## RESPONSIVE RULES
+- Mobile-First Approach
+- Team Grid: 3 → 2 → 1 Spalten
+- Stats Grid: 4 → 2 → 1 Spalten
+- Service Grid: auto-fit (automatisch responsive)
+
+## ANIMATION USAGE
+```html
+<!-- Hero Elements -->
+<div class="badge animate-fade-in">🇩🇪 Made in Germany</div>
+<h1 class="hero-title animate-fade-in-up">...</h1>
+
+<!-- Service Cards mit Stagger -->
+<div class="card animate-fade-in-up">Service 1</div>
+<div class="card animate-fade-in-up animation-delay-100">Service 2</div>
+<div class="card animate-fade-in-up animation-delay-200">Service 3</div>
+```
+
+## SEO & META
+```html
+<title>WECONN3CT.App | [Seitentitel]</title>
+<meta name="description" content="[Deutsche Beschreibung mit Services]">
+```
+
+## COMMON MISTAKES TO AVOID
+❌ Gamma-Beispielcontent verwenden
+❌ Englische Headlines schreiben
+❌ Sie-Form verwenden
+❌ Made in Germany vergessen
+❌ CTAs ohne #kontakt Link
+❌ Zu technische Sprache
+❌ Services-Reihenfolge ändern
+❌ Team-Namen/Positionen falsch schreiben
+
+## FILE STRUCTURE
+```
+weconn3ct.html           ← Hauptseite (Template)
+README_WECONN3CT.md      ← Ausführliche Doku
+WECONN3CT_QUICK.md       ← Quick Reference
+.cursorrules             ← Diese Datei
+css/                     ← Gamma Design-System (unverändert)
+js/                      ← Interaktionen
+```
+
+## AI INSTRUCTIONS
+Wenn du Code für WECONN3CT generierst:
+1. Verwende IMMER deutsche Texte (Du-Form)
+2. Behalte das Gamma Design-System CSS
+3. Setze WECONN3CT Branding ein (Logo, Tagline)
+4. Erwähne "Made in Germany" prominent
+5. Kommuniziere KI-Aspekt wo passend
+6. Alle CTAs zu #kontakt
+7. Nutze die 6 Core Services
+8. Team mit 3 Mitgliedern
+9. Stats: 15/4/8/12
+10. Bad Honnef erwähnen
+
+## QUALITY CHECKLIST
+Jede Seite muss haben:
+- [ ] WECONN3CT Logo/Name
+- [ ] Deutsche Texte (Du-Form)
+- [ ] "Made in Germany" Badge
+- [ ] KI-Bezug erwähnt
+- [ ] Alle CTAs → #kontakt
+- [ ] Responsive (mobile-getestet)
+- [ ] Animationen (fade-in-up)
+- [ ] Footer mit Copyright
+- [ ] Gamma CSS eingebunden
+- [ ] Navigation: Services/Vision/Team/Standort
+
+## SUCCESS CRITERIA
+Code ist gut wenn:
+✅ 100% deutscher Content
+✅ WECONN3CT Branding korrekt
+✅ Made in Germany kommuniziert
+✅ KI-Power erwähnt
+✅ Services korrekt (6 Core)
+✅ Team korrekt (3 Mitglieder)
+✅ Stats korrekt (15/4/8/12)
+✅ Bad Honnef erwähnt
+✅ Gamma Design-System verwendet
+✅ Mobile responsive
+✅ CTAs funktional
+
+## QUICK START
+```bash
+# Neue Seite erstellen
+cp weconn3ct.html neue-seite.html
+
+# Oder aus Template
+cat weconn3ct.html | sed 's/WECONN3CT/WECONN3CT/g' > neue-seite.html
+```
+
+Referenz-Dateien:
+- `weconn3ct.html` - Vollständige Beispiel-Implementation
+- `README_WECONN3CT.md` - Ausführliche Dokumentation
+- `WECONN3CT_QUICK.md` - Quick Reference Cheat Sheet
