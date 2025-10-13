@@ -54,11 +54,33 @@ class App{ constructor(container,{items,bend,textColor='#ffffff',borderRadius=0,
 // Auto-init with late-load safety (DOMContentLoaded may have already fired)
 function __initTeamGallery(){
   const container = document.getElementById('team-gallery');
-  if(!container) return;
+  if(!container){
+    console.error('Team gallery container not found!');
+    return;
+  }
   if (container.__galleryInit) return; // idempotent
   container.__galleryInit = true;
-  const app = new App(container, { bend:2, textColor:'#ffffff', borderRadius:0.08, scrollSpeed:2, scrollEase:0.05 });
+
+  console.log('Initializing team gallery...');
+
+  const teamItems = [
+    { image: 'Images/teams/leonardo.png', text: 'Leonardo Braun' },
+    { image: 'Images/teams/thinesh.png', text: 'Thinesh Rajabalah' },
+    { image: 'Images/teams/mentor.png', text: 'Mentor Sadiku' }
+  ];
+
+  const app = new App(container, {
+    items: teamItems,
+    bend: 2,
+    textColor: '#ffffff',
+    borderRadius: 0.08,
+    font: 'bold 30px Figtree',
+    scrollSpeed: 2,
+    scrollEase: 0.05
+  });
+
   window.__teamGallery = app;
+  console.log('Team gallery initialized!', app);
 }
 
 if (document.readyState === 'loading') {
