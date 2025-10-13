@@ -36,7 +36,7 @@ export class LightRays {
       mouseInfluence: 0.1,
       noiseAmount: 0.0,
       distortion: 0.05,
-      intensity: 1.4
+      intensity: 1.15
     }, config);
 
     this.mouse = { x: 0.5, y: 0.5 };
@@ -151,17 +151,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const config = {
     raysOrigin: 'top-center',
     raysColor: '#2E3EE8',
-    raysSpeed: 0.8,      // etwas schneller
-    lightSpread: 1.8,    // breiter
-    rayLength: 2.4,      // länger
+    raysSpeed: 0.7,
+    lightSpread: 1.7,
+    rayLength: 2.2,
     pulsating: false,
     fadeDistance: 1.3,
-    saturation: 0.9,
+    saturation: 0.85,
     followMouse: true,
     mouseInfluence: 0.15,
     noiseAmount: 0.04,
-    distortion: 0.12,
-    intensity: 1.4       // heller
+    distortion: 0.10,
+    intensity: 1.15
   };
   console.log('Light Rays Container:', container);
   console.log('Config:', config);
