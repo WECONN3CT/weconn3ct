@@ -33,12 +33,12 @@ class App{ constructor(container,{items,bend,textColor='#ffffff',borderRadius=0,
   createScene(){ this.scene=new Transform(); }
   createGeometry(){ this.planeGeometry=new Plane(this.gl,{ heightSegments:50, widthSegments:100 }); }
   createMedias(items,bend=1,textColor,borderRadius,font){ const defaultItems=[
-    { image:'https://picsum.photos/seed/team1/800/600', text:'Max Mustermann' },
-    { image:'https://picsum.photos/seed/team2/800/600', text:'Julia Schmidt' },
-    { image:'https://picsum.photos/seed/team3/800/600', text:'Lukas Weber' },
-    { image:'https://picsum.photos/seed/team4/800/600', text:'Sara Klein' },
-    { image:'https://picsum.photos/seed/team5/800/600', text:'Tobias Wagner' },
-    { image:'https://picsum.photos/seed/team6/800/600', text:'Nina Hofmann' }
+    { image:'Images/teams/leonardo.png', text:'Leonardo Braun' },
+    { image:'Images/teams/thinesh.png', text:'Thinesh Rajabalah' },
+    { image:'Images/teams/mentor.png', text:'Mentor Sadiku' },
+    { image:'Images/teams/leonardo.png', text:'Leonardo Braun' },
+    { image:'Images/teams/thinesh.png', text:'Thinesh Rajabalah' },
+    { image:'Images/teams/mentor.png', text:'Mentor Sadiku' }
   ]; const galleryItems=(items&&items.length)?items:defaultItems; this.mediasImages=galleryItems.concat(galleryItems); this.medias=this.mediasImages.map((data,index)=> new Media({ geometry:this.planeGeometry, gl:this.gl, image:data.image, index, length:this.mediasImages.length, renderer:this.renderer, scene:this.scene, screen:this.screen, text:data.text, viewport:this.viewport, bend, textColor, borderRadius, font })); }
   onTouchDown(e){ this.isDown=true; this.scroll.position=this.scroll.current; this.start=e.touches?e.touches[0].clientX:e.clientX; }
   onTouchMove(e){ if(!this.isDown) return; const x=e.touches?e.touches[0].clientX:e.clientX; const distance=(this.start-x)*(this.scrollSpeed*0.025); this.scroll.target=this.scroll.position+distance; }
