@@ -6,7 +6,7 @@
   height: 100%;
   pointer-events: none;
   z-index: 1; /* unter Content (DOM-Reihenfolge sorgt dafür), über Section-Background */
-  opacity: 0.72; /* stärker sichtbar */
+  opacity: 0.4; /* zurück auf dezent */
   overflow: hidden;
 }
 

@@ -27,17 +27,17 @@ export class LightRays {
       raysOrigin: 'top-center',
       raysColor: '#ffffff',
       raysSpeed: 1,
-      lightSpread: 2.0,   // breitere Lichtkegel
-      rayLength: 4.0,     // längere Reichweite
+      lightSpread: 1.0,
+      rayLength: 2.0,
       pulsating: false,
-      fadeDistance: 2.2,
+      fadeDistance: 1.0,
       saturation: 1.0,
       followMouse: true,
       mouseInfluence: 0.1,
       noiseAmount: 0.0,
       distortion: 0.0,
-      intensity: 1.2,
-      whiteMix: 0.2
+      intensity: 1.0,
+      whiteMix: 0.0
     }, config);
 
     this.mouse = { x: 0.5, y: 0.5 };
@@ -153,18 +153,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const config = {
     raysOrigin: 'top-center',
     raysColor: '#2E3EE8',
-    raysSpeed: 0.9,
-    lightSpread: 2.2,
-    rayLength: 3.8,
+    raysSpeed: 0.5,
+    lightSpread: 1.5,
+    rayLength: 1.8,
     pulsating: false,
-    fadeDistance: 2.2,
-    saturation: 0.9,
+    fadeDistance: 1.2,
+    saturation: 0.8,
     followMouse: true,
-    mouseInfluence: 0.18,
-    noiseAmount: 0.03,
-    distortion: 0.12,
-    intensity: 1.6,
-    whiteMix: 0.35
+    mouseInfluence: 0.15,
+    noiseAmount: 0.05,
+    distortion: 0.1,
+    intensity: 1.0,
+    whiteMix: 0.0
   };
   new LightRays(container, config);
 });
