@@ -32,8 +32,8 @@ export class LightRays {
       pulsating: false,
       fadeDistance: 1.0,
       saturation: 1.0,
-      followMouse: false,
-      mouseInfluence: 0.0,
+      followMouse: true,
+      mouseInfluence: 0.15,
       noiseAmount: 0.0,
       distortion: 0.0,
       intensity: 1.15
@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
     pulsating: false,
     fadeDistance: 1.3,
     saturation: 0.85,
-    followMouse: false,
-    mouseInfluence: 0.0,
+    followMouse: true,
+    mouseInfluence: 0.15,
     noiseAmount: 0.0,
     distortion: 0.0,
     intensity: 1.15
