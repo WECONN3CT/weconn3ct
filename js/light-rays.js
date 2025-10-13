@@ -26,16 +26,16 @@ export class LightRays {
     this.config = Object.assign({
       raysOrigin: 'top-center',
       raysColor: '#ffffff',
-      raysSpeed: 0.8,
-      lightSpread: 1.8,
-      rayLength: 2.4,
+      raysSpeed: 0.0,
+      lightSpread: 1.7,
+      rayLength: 2.2,
       pulsating: false,
       fadeDistance: 1.0,
       saturation: 1.0,
-      followMouse: true,
-      mouseInfluence: 0.1,
+      followMouse: false,
+      mouseInfluence: 0.0,
       noiseAmount: 0.0,
-      distortion: 0.05,
+      distortion: 0.0,
       intensity: 1.15
     }, config);
 
@@ -151,16 +151,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const config = {
     raysOrigin: 'top-center',
     raysColor: '#2E3EE8',
-    raysSpeed: 0.7,
+    raysSpeed: 0.0,
     lightSpread: 1.7,
     rayLength: 2.2,
     pulsating: false,
     fadeDistance: 1.3,
     saturation: 0.85,
-    followMouse: true,
-    mouseInfluence: 0.15,
-    noiseAmount: 0.04,
-    distortion: 0.10,
+    followMouse: false,
+    mouseInfluence: 0.0,
+    noiseAmount: 0.0,
+    distortion: 0.0,
     intensity: 1.15
   };
   console.log('Light Rays Container:', container);
