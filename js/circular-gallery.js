@@ -51,12 +51,20 @@ class App{ constructor(container,{items,bend,textColor='#ffffff',borderRadius=0,
   destroy(){ window.cancelAnimationFrame(this.raf); window.removeEventListener('resize',this.boundOnResize); window.removeEventListener('mousewheel',this.boundOnWheel); window.removeEventListener('wheel',this.boundOnWheel); window.removeEventListener('mousedown',this.boundOnTouchDown); window.removeEventListener('mousemove',this.boundOnTouchMove); window.removeEventListener('mouseup',this.boundOnTouchUp); window.removeEventListener('touchstart',this.boundOnTouchDown); window.removeEventListener('touchmove',this.boundOnTouchMove); window.removeEventListener('touchend',this.boundOnTouchUp); if(this.renderer&&this.renderer.gl&&this.renderer.gl.canvas.parentNode){ this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas); } }
 }
 
-// Auto-init when DOM ready
-document.addEventListener('DOMContentLoaded',()=>{
-  const container=document.getElementById('team-gallery');
+// Auto-init with late-load safety (DOMContentLoaded may have already fired)
+function __initTeamGallery(){
+  const container = document.getElementById('team-gallery');
   if(!container) return;
-  const app=new App(container,{ bend:2, textColor:'#ffffff', borderRadius:0.08, scrollSpeed:2, scrollEase:0.05 });
-  window.__teamGallery=app;
-});
+  if (container.__galleryInit) return; // idempotent
+  container.__galleryInit = true;
+  const app = new App(container, { bend:2, textColor:'#ffffff', borderRadius:0.08, scrollSpeed:2, scrollEase:0.05 });
+  window.__teamGallery = app;
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', __initTeamGallery);
+} else {
+  __initTeamGallery();
+}
 
 
