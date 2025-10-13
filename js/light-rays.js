@@ -44,6 +44,8 @@ export class LightRays {
     this.intersectionObserver = null;
 
     this.initIntersection();
+    // Fallback: sofort initialisieren, falls IntersectionObserver nicht sofort feuert
+    this.init();
   }
 
   initIntersection(){
