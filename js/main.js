@@ -104,8 +104,10 @@ const animatedElements = document.querySelectorAll(`
 `);
 
 animatedElements.forEach(el => {
-    // Set initial state
-    el.style.opacity = '0';
+    // Set initial state nur, wenn nicht bereits sichtbar
+    if (!el.classList.contains('visible')) {
+        el.style.opacity = '0';
+    }
     animateOnScroll.observe(el);
 });
 
