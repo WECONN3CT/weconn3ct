@@ -82,6 +82,8 @@
     // Add base class
     menu.classList.add('glass-surface');
     menu.style.borderRadius = `${options.borderRadius}px`;
+    // leicht mattes Glas visuell verstärken
+    menu.style.background = 'rgba(255,255,255,0.12)';
 
     // Build SVG filter
     const filterId = uniqueId('glass-filter');
@@ -162,7 +164,7 @@
       menu.classList.add('glass-surface--svg');
       // For CSS or direct style
       menu.style.setProperty('--glass-saturation', String(options.saturation));
-      menu.style.backdropFilter = `url(#${filterId}) saturate(${options.saturation})`;
+      menu.style.backdropFilter = `url(#${filterId}) blur(6px) saturate(${options.saturation})`;
     } else {
       menu.classList.add('glass-surface--fallback');
       menu.style.backdropFilter = 'blur(12px) saturate(1.8) brightness(1.1)';
