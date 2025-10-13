@@ -28,9 +28,9 @@ export class LightRays {
       raysColor: '#ffffff',
       raysSpeed: 1,
       lightSpread: 2.0,   // breitere Lichtkegel
-      rayLength: 3.2,     // längere Reichweite
+      rayLength: 4.0,     // längere Reichweite
       pulsating: false,
-      fadeDistance: 1.8,
+      fadeDistance: 2.2,
       saturation: 1.0,
       followMouse: true,
       mouseInfluence: 0.1,
@@ -155,9 +155,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     raysColor: '#2E3EE8',
     raysSpeed: 0.9,
     lightSpread: 2.2,
-    rayLength: 3.0,
+    rayLength: 3.8,
     pulsating: false,
-    fadeDistance: 1.8,
+    fadeDistance: 2.2,
     saturation: 0.9,
     followMouse: true,
     mouseInfluence: 0.18,
