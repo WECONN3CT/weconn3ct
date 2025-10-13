@@ -1,4 +1,4 @@
-import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://cdn.skypack.dev/ogl';
+import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://esm.sh/ogl@1.0.6';
 
 function debounce(func, wait){ let t; return function(...args){ clearTimeout(t); t=setTimeout(()=>func.apply(this,args),wait); }; }
 function lerp(p1,p2,t){ return p1+(p2-p1)*t; }
@@ -81,6 +81,18 @@ function __initTeamGallery(){
 
   window.__teamGallery = app;
   console.log('Team gallery initialized!', app);
+
+  // Debug: Canvas-Existenz nach 2s prüfen
+  setTimeout(() => {
+    const canvas = document.querySelector('#team-gallery canvas');
+    const rect = container.getBoundingClientRect();
+    console.log('Canvas after 2 seconds:', canvas);
+    console.log('Container rect:', rect.width, rect.height);
+    if (canvas) {
+      console.log('Canvas size:', canvas.width, canvas.height);
+      canvas.style.background = 'rgba(0,255,0,0.12)';
+    }
+  }, 2000);
 }
 
 if (document.readyState === 'loading') {
