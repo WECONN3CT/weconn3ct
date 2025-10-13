@@ -27,10 +27,10 @@ export class LightRays {
       raysOrigin: 'top-center',
       raysColor: '#ffffff',
       raysSpeed: 1,
-      lightSpread: 1,
-      rayLength: 2,
+      lightSpread: 0.9,
+      rayLength: 2.6,
       pulsating: false,
-      fadeDistance: 1.0,
+      fadeDistance: 1.4,
       saturation: 1.0,
       followMouse: true,
       mouseInfluence: 0.1,
@@ -149,16 +149,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
   const config = {
     raysOrigin: 'top-center',
     raysColor: '#2E3EE8',
-    raysSpeed: 0.5,
-    lightSpread: 1.5,
-    rayLength: 1.8,
+    raysSpeed: 0.8,
+    lightSpread: 1.1,
+    rayLength: 2.4,
     pulsating: false,
-    fadeDistance: 1.2,
-    saturation: 0.8,
+    fadeDistance: 1.4,
+    saturation: 0.9,
     followMouse: true,
-    mouseInfluence: 0.15,
-    noiseAmount: 0.05,
-    distortion: 0.1
+    mouseInfluence: 0.18,
+    noiseAmount: 0.03,
+    distortion: 0.12
   };
   new LightRays(container, config);
 });
