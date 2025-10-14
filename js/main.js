@@ -125,69 +125,77 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ===== HERO TITLE SPOTLIGHT (Cursor, GSAP-smoothed) =====
+// ===== HERO TITLE SPOTLIGHT (Cursor-gesteuert) =====
 (function(){
-    // Lade GSAP dynamisch, falls nicht vorhanden
-    const loadGSAP = () => {
-        return new Promise((resolve) => {
-            if (window.gsap) {
-                resolve(window.gsap);
-                return;
-            }
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
-            script.onload = () => resolve(window.gsap);
-            document.head.appendChild(script);
-        });
-    };
-
-    const initSpotlight = async () => {
-        await loadGSAP();
-        const gsap = window.gsap;
-
+    const initSpotlight = () => {
         const title = document.querySelector('.hero-title');
-        if (!title) return;
+        if (!title) {
+            console.warn('Hero-Title nicht gefunden');
+            return;
+        }
 
-        title.setAttribute('data-text', title.textContent || '');
+        // Sicherstellen dass data-text gesetzt ist
+        if (!title.getAttribute('data-text')) {
+            title.setAttribute('data-text', title.textContent.trim());
+        }
 
-        // Position state (0..1)
-        const pos = { x: 0.5, y: 0.5 };
+        console.log('✅ Spotlight aktiv');
 
-        // Quick setters für performantes Schreiben der CSS-Variablen
-        const setX = gsap.quickSetter(title, '--spot-x', '%');
-        const setY = gsap.quickSetter(title, '--spot-y', '%');
+        // Aktuelle Position für Smooth-Animation
+        let currentX = 50;
+        let currentY = 50;
+        let targetX = 50;
+        let targetY = 50;
 
-        // Initial center
-        setX(pos.x * 100);
-        setY(pos.y * 100);
-
-        // Smooth move
-        const moveTo = (x, y) => {
-            gsap.to(pos, {
-                x,
-                y,
-                duration: 0.45,
-                ease: 'power3.out',
-                onUpdate: () => {
-                    setX(pos.x * 100);
-                    setY(pos.y * 100);
-                },
-                overwrite: true
-            });
+        // Funktion zum Setzen der CSS-Variablen
+        const updatePosition = () => {
+            title.style.setProperty('--spot-x', `${currentX}%`);
+            title.style.setProperty('--spot-y', `${currentY}%`);
         };
 
-        title.addEventListener('pointermove', (e) => {
+        // Smooth Animation Loop
+        const animate = () => {
+            // Interpoliere zu Zielposition (smooth easing)
+            currentX += (targetX - currentX) * 0.15;
+            currentY += (targetY - currentY) * 0.15;
+            
+            updatePosition();
+            requestAnimationFrame(animate);
+        };
+        animate();
+
+        // Mouse Move Handler
+        title.addEventListener('mousemove', (e) => {
             const rect = title.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width;
-            const y = (e.clientY - rect.top) / rect.height;
-            moveTo(x, y);
+            targetX = ((e.clientX - rect.left) / rect.width) * 100;
+            targetY = ((e.clientY - rect.top) / rect.height) * 100;
         });
 
-        title.addEventListener('pointerleave', () => {
-            moveTo(0.5, 0.5);
+        // Mouse Leave - zurück zur Mitte
+        title.addEventListener('mouseleave', () => {
+            targetX = 50;
+            targetY = 50;
         });
+
+        // Touch Support für Mobile
+        title.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const rect = title.getBoundingClientRect();
+            targetX = ((touch.clientX - rect.left) / rect.width) * 100;
+            targetY = ((touch.clientY - rect.top) / rect.height) * 100;
+        });
+
+        title.addEventListener('touchend', () => {
+            targetX = 50;
+            targetY = 50;
+        });
+
+        // Initial Position
+        updatePosition();
     };
 
+    // Initialisierung
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSpotlight);
     } else {
