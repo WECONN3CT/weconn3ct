@@ -13,6 +13,50 @@
   pointer-events: none;
 }
 
+/* SVG Text Container */
+.hero-title-svg {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  display: block;
+}
+
+/* SVG Text Styles */
+.hero-svg-text {
+  font-size: 90px;
+  font-weight: var(--font-bold);
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  paint-order: stroke fill; /* Stroke zuerst, dann Fill → keine Doppelränder */
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.15))
+          drop-shadow(0 4px 4px rgba(0,0,0,0.25));
+}
+
+/* SEO Fallback (visually hidden) */
+.hero-title-fallback {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-svg-text {
+    font-size: 48px;
+  }
+  .hero-title-svg {
+    max-width: 100%;
+  }
+}
+
 /* Base Layer */
 .hero-title-base {
   position: relative;

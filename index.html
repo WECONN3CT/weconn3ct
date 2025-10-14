@@ -90,11 +90,19 @@
                         </defs>
                     </svg>
                     
-                    <!-- Base Layer -->
-                    <h1 class="hero-title-base">Wir verwandeln Ideen in digitale Erlebnisse</h1>
-                    
-                    <!-- Overlay Layer (Glas-Text) -->
-                    <h1 class="hero-title-mask" aria-hidden="true">Wir verwandeln Ideen in digitale Erlebnisse</h1>
+                    <!-- SVG Text für saubere Strokes (zweizeilig) -->
+                    <svg class="hero-title-svg" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="hero-text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:rgba(255,255,255,0.25);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <text x="50%" y="120" text-anchor="middle" class="hero-svg-text" fill="url(#hero-text-gradient)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" filter="url(#hero-glass-filter)">Wir verwandeln Ideen in</text>
+                        <text x="50%" y="220" text-anchor="middle" class="hero-svg-text" fill="url(#hero-text-gradient)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" filter="url(#hero-glass-filter)">digitale Erlebnisse</text>
+                    </svg>
+                    <h1 class="hero-title-fallback">Wir verwandeln Ideen in digitale Erlebnisse</h1>
                 </div>
                 <p class="hero-subtitle animate-fade-in-up animation-delay-100">
                     Apps, Websites und Software, die nicht nur funktionieren, sondern begeistern. Schnell, budgetfreundlich und mit smarter KI-Power. Perfekt für Startups, KMU und Creator.
