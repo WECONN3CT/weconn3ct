@@ -710,19 +710,37 @@
 .hero-title {
   font-size: var(--text-7xl);
   font-weight: var(--font-bold);
-  font-family: var(--font-display); /* moderne Display-Schrift */
-  line-height: 1.15; /* mehr Luft für Unterlängen (g, j, y) */
-  display: inline-block; /* erlaubt Padding zur Vermeidung von Clipping */
-  padding-bottom: 0.1em; /* zusätzliche Baseline-Luft gegen Abschneiden */
+  font-family: var(--font-display);
+  line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
   position: relative;
-  color: var(--gamma-gray); /* Basis: grau, Spotlight zeigt Verlauf */
-  /* Default-Variablen für Spotlight, von JS dynamisch überschrieben */
-  --spot-x: 50%;
-  --spot-y: 50%;
-  --spot-r: 0px; /* Start: kein sichtbarer Spot */
-  --spot-o: 0;   /* Start: Overlay unsichtbar */
+  
+  /* Gradient über den gesamten Text */
+  background: linear-gradient(
+    90deg,
+    rgba(200, 200, 220, 0.7) 0%,
+    rgba(200, 200, 220, 0.7) 15%,
+    #a78bfa 22%,
+    #818cf8 32%,
+    #60a5fa 42%,
+    #3b82f6 52%,
+    #1ECAD3 62%,
+    rgba(200, 200, 220, 0.7) 70%,
+    rgba(200, 200, 220, 0.7) 100%
+  );
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Glow-Effekt für Premium-Look */
+  filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.4))
+          drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+  
+  /* Smooth Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-subtitle {
@@ -747,42 +765,7 @@
   text-decoration: none;
 }
 
-/* Spotlight-Effekt für Hero-Title */
-.hero-title::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  color: transparent;
-  /* Lila-dominanter Verlauf (Purple → Ultramarine) */
-  background: linear-gradient(90deg,
-    var(--gamma-purple) 0%,
-    var(--gamma-purple) 35%,
-    #2E3EE8 65%,
-    var(--gamma-ultramarine) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  opacity: var(--spot-o);
-  transition: opacity 0.2s ease;
-  /* Maskiere auf Kreis um Cursor-Position */
-  -webkit-mask-image: radial-gradient(
-    circle var(--spot-r) at var(--spot-x) var(--spot-y),
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.95) 40%,
-    rgba(0, 0, 0, 0.7) 60%,
-    rgba(0, 0, 0, 0.3) 80%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    circle var(--spot-r) at var(--spot-x) var(--spot-y),
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 0.95) 40%,
-    rgba(0, 0, 0, 0.7) 60%,
-    rgba(0, 0, 0, 0.3) 80%,
-    transparent 100%
-  );
-}
+/* Spotlight-Effekt entfernt: fester Gradient in .hero-title */
 
 /* Dünner Glas-Balken unter der Hero-Section */
 .glass-bar {
