@@ -721,6 +721,8 @@
   --spot-y: 50%;
   --spot-r: 0px; /* Start: kein Spot */
   --spot-o: 0;   /* Start: unsichtbar */
+  /* Glas-Tiefe */
+  text-shadow: 0 1px 1px rgba(255,255,255,0.08), 0 8px 22px rgba(0,0,0,0.25);
   
   /* Smooth Rendering */
   -webkit-font-smoothing: antialiased;
@@ -734,15 +736,22 @@
   inset: 0;
   pointer-events: none;
   color: transparent;
-  background: linear-gradient(90deg,
-    rgba(167,139,250,0.65) 0%,
-    rgba(129,140,248,0.60) 30%,
-    rgba(96,165,250,0.55) 55%,
-    rgba(59,130,246,0.55) 75%,
-    rgba(30,202,211,0.55) 100%
-  );
+  background:
+    /* Oberes Glas-Highlight */
+    linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.00) 45%),
+    /* Diagonales Corner-Highlight */
+    radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 60%),
+    /* Farbverlauf */
+    linear-gradient(90deg,
+      rgba(167,139,250,0.60) 0%,
+      rgba(129,140,248,0.55) 30%,
+      rgba(96,165,250,0.50) 55%,
+      rgba(59,130,246,0.50) 75%,
+      rgba(30,202,211,0.50) 100%
+    );
   -webkit-background-clip: text;
   background-clip: text;
+  background-blend-mode: screen, screen, normal;
   opacity: var(--spot-o);
   transition: opacity 0.15s ease-out;
   -webkit-mask-image: radial-gradient(
