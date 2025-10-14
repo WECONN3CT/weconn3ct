@@ -153,7 +153,7 @@ document.head.appendChild(style);
         let targetR = 0;    // px
         let targetO = 0;    // 0..1
 
-        const VISIBLE_RADIUS = 280; // sichtbarer Standard-Radius
+        const VISIBLE_RADIUS = 180; // sichtbarer Standard-Radius (kleiner)
 
         // CSS-Variablen setzen
         const updateSpotlight = () => {
@@ -170,8 +170,8 @@ document.head.appendChild(style);
             currentY += (targetY - currentY) * 0.15;
             // Radius
             currentR += (targetR - currentR) * 0.18;
-            // Opacity
-            currentO += (targetO - currentO) * 0.2;
+            // Opacity langsamer einblenden
+            currentO += (targetO - currentO) * 0.08;
 
             updateSpotlight();
             requestAnimationFrame(animate);
