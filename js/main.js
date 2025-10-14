@@ -125,6 +125,34 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// ===== HERO TITLE SPOTLIGHT (Cursor) =====
+(function(){
+    const title = document.querySelector('.hero-title');
+    if (!title) return;
+    // Duplizierter Text für ::after Inhalt
+    title.setAttribute('data-text', title.textContent || '');
+    let spotX = 0.5, spotY = 0.5;
+    let animId;
+    function render(){
+        title.style.setProperty('--spot-x', `${spotX*100}%`);
+        title.style.setProperty('--spot-y', `${spotY*100}%`);
+        animId = undefined;
+    }
+    function setPos(x, y){
+        spotX = x; spotY = y;
+        if (!animId) animId = requestAnimationFrame(render);
+    }
+    title.addEventListener('pointermove', (e)=>{
+        const r = title.getBoundingClientRect();
+        const x = (e.clientX - r.left) / Math.max(r.width,1);
+        const y = (e.clientY - r.top) / Math.max(r.height,1);
+        setPos(x, y);
+    });
+    title.addEventListener('pointerleave', ()=>{
+        setPos(0.5, 0.5);
+    });
+})();
+
 // ===== ACTIVE NAVIGATION LINK ON SCROLL =====
 const sections = document.querySelectorAll('section[id]');
 

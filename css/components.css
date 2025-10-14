@@ -716,11 +716,8 @@
   padding-bottom: 0.1em; /* zusätzliche Baseline-Luft gegen Abschneiden */
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
-  /* Verlauf im Stil Blau/Purple mit leichter Türkis-Note am Start */
-  background: linear-gradient(90deg, #1ECAD3 0%, var(--gamma-ultramarine) 50%, var(--gamma-purple) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  position: relative;
+  color: var(--gamma-gray); /* Basis: grau, Spotlight zeigt Verlauf */
 }
 
 .hero-subtitle {
@@ -743,6 +740,25 @@
 /* Hero Buttons: kein Unterstreichen beim Hover */
 .hero .btn:hover {
   text-decoration: none;
+}
+
+/* Spotlight-Effekt für Hero-Title */
+.hero-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: transparent;
+  /* gleicher Verlauf wie zuvor, sichtbar nur unter der Maske */
+  background: linear-gradient(90deg, #1ECAD3 0%, var(--gamma-ultramarine) 50%, var(--gamma-purple) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Maskiere auf Kreis um Cursor-Position */
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-r: 220px;
+  -webkit-mask-image: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), #000 0%, #000 60%, transparent 70%);
+  mask-image: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), #000 0%, #000 60%, transparent 70%);
 }
 
 /* Dünner Glas-Balken unter der Hero-Section */
