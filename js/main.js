@@ -165,7 +165,7 @@ document.head.appendChild(style);
 
         title.addEventListener('pointerenter', () => {
             targetR = VISIBLE_RADIUS;
-            targetO = 1.0; // maximale Sättigung beim Hover
+            targetO = 0.6; // transparenterer Gesamteindruck
         });
 
         title.addEventListener('pointermove', (e) => {
