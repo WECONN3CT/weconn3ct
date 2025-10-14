@@ -756,9 +756,23 @@
   /* Maskiere auf Kreis um Cursor-Position */
   --spot-x: 50%;
   --spot-y: 50%;
-  --spot-r: 220px;
-  -webkit-mask-image: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), #000 0%, #000 60%, transparent 70%);
-  mask-image: radial-gradient(circle var(--spot-r) at var(--spot-x) var(--spot-y), #000 0%, #000 60%, transparent 70%);
+  --spot-r: 280px;
+  -webkit-mask-image: radial-gradient(
+    circle var(--spot-r) at var(--spot-x) var(--spot-y),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.95) 40%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.3) 80%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--spot-r) at var(--spot-x) var(--spot-y),
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.95) 40%,
+    rgba(0, 0, 0, 0.7) 60%,
+    rgba(0, 0, 0, 0.3) 80%,
+    transparent 100%
+  );
 }
 
 /* Dünner Glas-Balken unter der Hero-Section */

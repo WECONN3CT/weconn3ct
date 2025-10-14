@@ -125,32 +125,74 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ===== HERO TITLE SPOTLIGHT (Cursor) =====
+// ===== HERO TITLE SPOTLIGHT (Cursor, GSAP-smoothed) =====
 (function(){
-    const title = document.querySelector('.hero-title');
-    if (!title) return;
-    // Duplizierter Text für ::after Inhalt
-    title.setAttribute('data-text', title.textContent || '');
-    let spotX = 0.5, spotY = 0.5;
-    let animId;
-    function render(){
-        title.style.setProperty('--spot-x', `${spotX*100}%`);
-        title.style.setProperty('--spot-y', `${spotY*100}%`);
-        animId = undefined;
+    // Lade GSAP dynamisch, falls nicht vorhanden
+    const loadGSAP = () => {
+        return new Promise((resolve) => {
+            if (window.gsap) {
+                resolve(window.gsap);
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+            script.onload = () => resolve(window.gsap);
+            document.head.appendChild(script);
+        });
+    };
+
+    const initSpotlight = async () => {
+        await loadGSAP();
+        const gsap = window.gsap;
+
+        const title = document.querySelector('.hero-title');
+        if (!title) return;
+
+        title.setAttribute('data-text', title.textContent || '');
+
+        // Position state (0..1)
+        const pos = { x: 0.5, y: 0.5 };
+
+        // Quick setters für performantes Schreiben der CSS-Variablen
+        const setX = gsap.quickSetter(title, '--spot-x', '%');
+        const setY = gsap.quickSetter(title, '--spot-y', '%');
+
+        // Initial center
+        setX(pos.x * 100);
+        setY(pos.y * 100);
+
+        // Smooth move
+        const moveTo = (x, y) => {
+            gsap.to(pos, {
+                x,
+                y,
+                duration: 0.45,
+                ease: 'power3.out',
+                onUpdate: () => {
+                    setX(pos.x * 100);
+                    setY(pos.y * 100);
+                },
+                overwrite: true
+            });
+        };
+
+        title.addEventListener('pointermove', (e) => {
+            const rect = title.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            moveTo(x, y);
+        });
+
+        title.addEventListener('pointerleave', () => {
+            moveTo(0.5, 0.5);
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSpotlight);
+    } else {
+        initSpotlight();
     }
-    function setPos(x, y){
-        spotX = x; spotY = y;
-        if (!animId) animId = requestAnimationFrame(render);
-    }
-    title.addEventListener('pointermove', (e)=>{
-        const r = title.getBoundingClientRect();
-        const x = (e.clientX - r.left) / Math.max(r.width,1);
-        const y = (e.clientY - r.top) / Math.max(r.height,1);
-        setPos(x, y);
-    });
-    title.addEventListener('pointerleave', ()=>{
-        setPos(0.5, 0.5);
-    });
 })();
 
 // ===== ACTIVE NAVIGATION LINK ON SCROLL =====
