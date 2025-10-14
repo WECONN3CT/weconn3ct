@@ -747,9 +747,20 @@
   filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.18))
           drop-shadow(0 0 10px rgba(99, 102, 241, 0.14));
   
+  /* Hover-Animation: Farbverlauf sanft verschieben */
+  background-size: 100% 100%, 120% 120%, 200% 100%;
+  background-position: 0% 0, 0% 0, 0% 0;
+  transition: background-position 1.2s ease, filter 0.35s ease;
+  
   /* Smooth Rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-title:hover {
+  background-position: 0% 0, 0% 0, 100% 0;
+  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.24))
+          drop-shadow(0 0 14px rgba(99, 102, 241, 0.18));
 }
 
 .hero-subtitle {
