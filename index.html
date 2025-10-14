@@ -59,7 +59,7 @@
                                 <feImage id="hero-displacement-map" width="100%" height="100%" preserveAspectRatio="none" result="map" />
 
                                 <!-- Red Channel -->
-                                <feDisplacementMap in="SourceGraphic" in2="map" scale="-180" xChannelSelector="R" yChannelSelector="G" result="dispRed" />
+                                <feDisplacementMap in="SourceGraphic" in2="map" scale="-8" xChannelSelector="R" yChannelSelector="G" result="dispRed" />
                                 <feColorMatrix in="dispRed" type="matrix"
                                   values="1 0 0 0 0
                                           0 0 0 0 0
@@ -67,7 +67,7 @@
                                           0 0 0 1 0" result="red" />
 
                                 <!-- Green Channel -->
-                                <feDisplacementMap in="SourceGraphic" in2="map" scale="-170" xChannelSelector="R" yChannelSelector="G" result="dispGreen" />
+                                <feDisplacementMap in="SourceGraphic" in2="map" scale="-6" xChannelSelector="R" yChannelSelector="G" result="dispGreen" />
                                 <feColorMatrix in="dispGreen" type="matrix"
                                   values="0 0 0 0 0
                                           0 1 0 0 0
@@ -75,7 +75,7 @@
                                           0 0 0 1 0" result="green" />
 
                                 <!-- Blue Channel -->
-                                <feDisplacementMap in="SourceGraphic" in2="map" scale="-160" xChannelSelector="R" yChannelSelector="G" result="dispBlue" />
+                                <feDisplacementMap in="SourceGraphic" in2="map" scale="-4" xChannelSelector="R" yChannelSelector="G" result="dispBlue" />
                                 <feColorMatrix in="dispBlue" type="matrix"
                                   values="0 0 0 0 0
                                           0 0 0 0 0
@@ -85,7 +85,7 @@
                                 <!-- Combine Channels -->
                                 <feBlend in="red" in2="green" mode="screen" result="rg" />
                                 <feBlend in="rg" in2="blue" mode="screen" result="output" />
-                                <feGaussianBlur in="output" stdDeviation="0.5" />
+                                <feGaussianBlur in="output" stdDeviation="0.2" />
                             </filter>
                         </defs>
                     </svg>

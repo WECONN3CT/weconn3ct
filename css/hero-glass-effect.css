@@ -26,9 +26,9 @@
   background-clip: text;
   filter: url(#hero-glass-filter);
   text-shadow: 
-    0 0 20px rgba(30, 202, 211, 0.3),
-    0 0 40px rgba(46, 62, 232, 0.2),
-    0 0 60px rgba(157, 78, 221, 0.1);
+    0 0 10px rgba(30, 202, 211, 0.2),
+    0 0 20px rgba(46, 62, 232, 0.15),
+    0 0 30px rgba(157, 78, 221, 0.1);
 }
 
 @supports not (filter: url(#hero-glass-filter)) {
