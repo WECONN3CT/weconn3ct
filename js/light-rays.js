@@ -150,13 +150,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
   if (!container) return;
   const config = {
     raysOrigin: 'top-center',
-    raysColor: '#2E3EE8',
+    raysColor: '#9D4EDD',
     raysSpeed: 0.0,
     lightSpread: 1.7,
     rayLength: 2.2,
     pulsating: false,
     fadeDistance: 1.3,
-    saturation: 0.85,
+    saturation: 1.0,
     followMouse: true,
     mouseInfluence: 0.15,
     noiseAmount: 0.0,
