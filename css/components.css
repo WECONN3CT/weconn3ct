@@ -716,27 +716,36 @@
   margin-bottom: var(--space-6);
   position: relative;
   
-  /* Gradient über den gesamten Text */
-  background: linear-gradient(
-    90deg,
-    rgba(200, 200, 220, 0.7) 0%,
-    rgba(200, 200, 220, 0.7) 15%,
-    #a78bfa 22%,
-    #818cf8 32%,
-    #60a5fa 42%,
-    #3b82f6 52%,
-    #1ECAD3 62%,
-    rgba(200, 200, 220, 0.7) 70%,
-    rgba(200, 200, 220, 0.7) 100%
-  );
+  /* Glasiger, transparenter Gradient (mehrschichtig) */
+  background:
+    /* Oberes Glas-Highlight */
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.00) 38%),
+    /* Diagonales Corner-Highlight */
+    radial-gradient(120% 100% at 0% 0%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.00) 60%),
+    /* Hauptfarbverlauf mit geringerer Deckkraft */
+    linear-gradient(
+      90deg,
+      rgba(200, 200, 220, 0.45) 0%,
+      rgba(200, 200, 220, 0.45) 15%,
+      rgba(167, 139, 250, 0.60) 22%,
+      rgba(129, 140, 248, 0.55) 32%,
+      rgba(96, 165, 250, 0.50) 42%,
+      rgba(59, 130, 246, 0.50) 52%,
+      rgba(30, 202, 211, 0.50) 62%,
+      rgba(200, 200, 220, 0.45) 70%,
+      rgba(200, 200, 220, 0.45) 100%
+    );
   
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Glow-Effekt für Premium-Look */
-  filter: drop-shadow(0 0 40px rgba(139, 92, 246, 0.4))
-          drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+  /* Blend-Modi für Glaslayer */
+  background-blend-mode: screen, screen, normal;
+
+  /* Dezenterer Glow für realistischeren Glas-Look */
+  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.25))
+          drop-shadow(0 0 12px rgba(99, 102, 241, 0.20));
   
   /* Smooth Rendering */
   -webkit-font-smoothing: antialiased;
