@@ -165,7 +165,7 @@ document.head.appendChild(style);
 
         title.addEventListener('pointerenter', () => {
             targetR = VISIBLE_RADIUS;
-            targetO = 1;
+            targetO = 0.65; // maximale Overlay-Opazität begrenzen
         });
 
         title.addEventListener('pointermove', (e) => {
