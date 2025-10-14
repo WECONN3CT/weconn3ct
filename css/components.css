@@ -715,7 +715,7 @@
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
   position: relative;
-  color: rgba(17, 24, 39, 0.34); /* sehr dunkles Grau/Schwarz mit Alpha (var(--gamma-black) mit Alpha) */
+  color: rgba(17, 24, 39, 0.32); /* noch dunkler und transparenter (var(--gamma-black) mit Alpha) */
   /* Variablen für Spotlight-Overlay (von JS gesteuert) */
   --spot-x: 50%;
   --spot-y: 50%;
