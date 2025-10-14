@@ -168,10 +168,10 @@ document.head.appendChild(style);
             // Position
             currentX += (targetX - currentX) * 0.15;
             currentY += (targetY - currentY) * 0.15;
-            // Radius
-            currentR += (targetR - currentR) * 0.18;
-            // Opacity langsamer einblenden
-            currentO += (targetO - currentO) * 0.08;
+            // Radius noch sanfter
+            currentR += (targetR - currentR) * 0.12;
+            // Opacity noch langsamer einblenden
+            currentO += (targetO - currentO) * 0.04;
 
             updateSpotlight();
             requestAnimationFrame(animate);
