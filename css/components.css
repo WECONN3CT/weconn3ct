@@ -750,7 +750,7 @@
   pointer-events: none;
   color: transparent;
   /* gleicher Verlauf wie zuvor, sichtbar nur unter der Maske */
-  background: linear-gradient(90deg, #1ECAD3 0%, var(--gamma-ultramarine) 50%, var(--gamma-purple) 100%);
+  background: linear-gradient(90deg, var(--gamma-purple) 0%, #2E3EE8 50%, var(--gamma-ultramarine) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   /* Maskiere auf Kreis um Cursor-Position */
