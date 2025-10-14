@@ -715,52 +715,46 @@
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
   position: relative;
-  
-  /* Glasiger, transparenter Gradient (mehrschichtig) */
-  background:
-    /* Oberes Glas-Highlight */
-    linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 38%),
-    /* Diagonales Corner-Highlight */
-    radial-gradient(120% 100% at 0% 0%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 60%),
-    /* Hauptfarbverlauf mit geringerer Deckkraft */
-    linear-gradient(
-      90deg,
-      rgba(200, 200, 220, 0.28) 0%,
-      rgba(200, 200, 220, 0.28) 15%,
-      rgba(167, 139, 250, 0.40) 22%,
-      rgba(129, 140, 248, 0.36) 32%,
-      rgba(96, 165, 250, 0.34) 42%,
-      rgba(59, 130, 246, 0.34) 52%,
-      rgba(30, 202, 211, 0.34) 62%,
-      rgba(200, 200, 220, 0.28) 70%,
-      rgba(200, 200, 220, 0.28) 100%
-    );
-  
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  /* Blend-Modi für Glaslayer */
-  background-blend-mode: screen, screen, normal;
-
-  /* Dezenterer Glow für realistischeren Glas-Look */
-  filter: drop-shadow(0 0 18px rgba(139, 92, 246, 0.18))
-          drop-shadow(0 0 10px rgba(99, 102, 241, 0.14));
-  
-  /* Hover-Animation: Farbverlauf sanft verschieben */
-  background-size: 100% 100%, 120% 120%, 200% 100%;
-  background-position: 0% 0, 0% 0, 0% 0;
-  transition: background-position 1.2s ease, filter 0.35s ease;
+  color: var(--gamma-gray);
+  /* Variablen für Spotlight-Overlay (von JS gesteuert) */
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-r: 0px; /* Start: kein Spot */
+  --spot-o: 0;   /* Start: unsichtbar */
   
   /* Smooth Rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.hero-title:hover {
-  background-position: 0% 0, 0% 0, 100% 0;
-  filter: drop-shadow(0 0 24px rgba(139, 92, 246, 0.24))
-          drop-shadow(0 0 14px rgba(99, 102, 241, 0.18));
+/* Maus-Spotlight Overlay: Farbverlauf folgt der Maus */
+.hero-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: transparent;
+  background: linear-gradient(90deg, #a78bfa 0%, #818cf8 30%, #60a5fa 55%, #3b82f6 75%, #1ECAD3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  opacity: var(--spot-o);
+  transition: opacity 0.15s ease-out;
+  -webkit-mask-image: radial-gradient(
+    circle var(--spot-r) at var(--spot-x) var(--spot-y),
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.95) 40%,
+    rgba(0,0,0,0.7) 60%,
+    rgba(0,0,0,0.3) 80%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    circle var(--spot-r) at var(--spot-x) var(--spot-y),
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.95) 40%,
+    rgba(0,0,0,0.7) 60%,
+    rgba(0,0,0,0.3) 80%,
+    transparent 100%
+  );
 }
 
 .hero-subtitle {
