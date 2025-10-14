@@ -124,72 +124,7 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-// ===== HERO TITLE SPOTLIGHT (Maus folgt) =====
-(function(){
-    const initSpotlight = () => {
-        const title = document.querySelector('.hero-title');
-        if (!title) return;
-
-        if (!title.getAttribute('data-text')) {
-            title.setAttribute('data-text', (title.textContent || '').trim());
-        }
-
-        let currentX = 50;
-        let currentY = 50;
-        let currentR = 0;   // px
-        let currentO = 0;   // 0..1
-
-        let targetX = 50;
-        let targetY = 50;
-        let targetR = 0;    // px
-        let targetO = 0;    // 0..1
-
-        const VISIBLE_RADIUS = 180; // sichtbarer Standard-Radius
-
-        const updateVars = () => {
-            title.style.setProperty('--spot-x', `${currentX}%`);
-            title.style.setProperty('--spot-y', `${currentY}%`);
-            title.style.setProperty('--spot-r', `${currentR}px`);
-            title.style.setProperty('--spot-o', `${currentO}`);
-        };
-
-        const animate = () => {
-            currentX += (targetX - currentX) * 0.15;
-            currentY += (targetY - currentY) * 0.15;
-            currentR += (targetR - currentR) * 0.15;
-            currentO += (targetO - currentO) * 0.12;
-            updateVars();
-            requestAnimationFrame(animate);
-        };
-        animate();
-
-        title.addEventListener('pointerenter', () => {
-            targetR = VISIBLE_RADIUS;
-            targetO = 0.6; // transparenterer Gesamteindruck
-        });
-
-        title.addEventListener('pointermove', (e) => {
-            const rect = title.getBoundingClientRect();
-            targetX = ((e.clientX - rect.left) / rect.width) * 100;
-            targetY = ((e.clientY - rect.top) / rect.height) * 100;
-        });
-
-        title.addEventListener('pointerleave', () => {
-            targetX = 50;
-            targetY = 50;
-            targetR = 0;
-            targetO = 0;
-        });
-
-        updateVars();
-    };
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initSpotlight);
-    } else {
-        initSpotlight();
-    }
-})();
+// Hero-Title: Spotlight entfernt – reiner Glas-Effekt ohne Interaktion
 
 // ===== ACTIVE NAVIGATION LINK ON SCROLL =====
 const sections = document.querySelectorAll('section[id]');

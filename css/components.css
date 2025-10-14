@@ -715,67 +715,28 @@
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
   position: relative;
-  color: rgba(17, 24, 39, 0.32); /* noch dunkler und transparenter (var(--gamma-black) mit Alpha) */
-  /* Variablen für Spotlight-Overlay (von JS gesteuert) */
-  --spot-x: 50%;
-  --spot-y: 50%;
-  --spot-r: 0px; /* Start: kein Spot */
-  --spot-o: 0;   /* Start: unsichtbar */
-  /* Glas-Tiefe */
-  text-shadow: 0 1px 1px rgba(255,255,255,0.08), 0 8px 22px rgba(0,0,0,0.25);
+  display: inline-block;
+  padding: var(--space-2) var(--space-6);
+  border-radius: var(--radius-full);
+  
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 10px 24px rgba(46, 62, 232, 0.28),
+    0 0 22px rgba(157, 78, 221, 0.46),
+    0 0 16px rgba(46, 62, 232, 0.38),
+    0 0 0 1px rgba(46, 62, 232, 0.20);
+  color: var(--gamma-white);
+  text-shadow: 0 1px 1px rgba(17,24,39,0.25);
   
   /* Smooth Rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Maus-Spotlight Overlay: Farbverlauf folgt der Maus */
-.hero-title::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  color: transparent;
-  background:
-    /* Oberes Glas-Highlight */
-    linear-gradient(180deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.00) 45%),
-    /* Diagonales Corner-Highlight */
-    radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 60%),
-    /* Farbverlauf */
-    linear-gradient(90deg,
-      rgba(167,139,250,0.70) 0%,
-      rgba(129,140,248,0.68) 30%,
-      rgba(96,165,250,0.66) 55%,
-      rgba(59,130,246,0.66) 75%,
-      rgba(30,202,211,0.64) 100%
-    );
-  -webkit-background-clip: text;
-  background-clip: text;
-  background-blend-mode: screen, screen, normal;
-  opacity: var(--spot-o);
-  /* stärkere Sättigung + Glow */
-  filter: saturate(1.35) brightness(1.02)
-          drop-shadow(0 0 34px rgba(139, 92, 246, 0.46))
-          drop-shadow(0 0 20px rgba(99, 102, 241, 0.36))
-          drop-shadow(0 0 14px rgba(30, 202, 211, 0.30));
-  transition: opacity 0.2s ease-out, filter 0.2s ease-out;
-  -webkit-mask-image: radial-gradient(
-    circle var(--spot-r) at var(--spot-x) var(--spot-y),
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.95) 40%,
-    rgba(0,0,0,0.7) 60%,
-    rgba(0,0,0,0.3) 80%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    circle var(--spot-r) at var(--spot-x) var(--spot-y),
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,0.95) 40%,
-    rgba(0,0,0,0.7) 60%,
-    rgba(0,0,0,0.3) 80%,
-    transparent 100%
-  );
-}
+/* Maus-Spotlight/Overlay entfernt: reiner Glas-Titel */
 
 .hero-subtitle {
   font-size: var(--text-xl);
