@@ -1,8 +1,10 @@
 .hero-title-glass-wrapper {
   position: relative;
-  display: inline-block;
-  /* Wichtig für backdrop-filter in Kindern */
-  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: var(--space-6);
+  width: 100%;
 }
 
 .hero-title-glass-filter {
@@ -16,22 +18,21 @@
 /* SVG Text Container */
 .hero-title-svg {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   height: auto;
+  min-height: 320px;
   display: block;
 }
 
 /* SVG Text Styles */
 .hero-svg-text {
-  font-size: 90px;
-  font-weight: var(--font-bold);
+  font-size: 92px;
+  font-weight: 700;
   font-family: var(--font-display);
   letter-spacing: -0.02em;
   paint-order: stroke fill; /* Stroke zuerst, dann Fill → keine Doppelränder */
   stroke-linejoin: round;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 20px rgba(255,255,255,0.15))
-          drop-shadow(0 4px 4px rgba(0,0,0,0.25));
 }
 
 /* SEO Fallback (visually hidden) */
@@ -52,24 +53,10 @@
   .hero-svg-text {
     font-size: 48px;
   }
-  .hero-title-svg {
-    max-width: 100%;
-  }
 }
 
-/* Base Layer */
-.hero-title-base {
-  position: relative;
-  z-index: 1;
-  font-size: var(--text-7xl);
-  font-weight: var(--font-bold);
-  font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-6);
-  color: rgba(255, 255, 255, 0.2);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
+/* Entfernt alte Layer-Styles */
+/* .hero-title-base, .hero-title-mask { } */
 
 /* Overlay Outline Layer */
 .hero-title-mask,
