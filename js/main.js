@@ -165,7 +165,7 @@ document.head.appendChild(style);
 
         title.addEventListener('pointerenter', () => {
             targetR = VISIBLE_RADIUS;
-            targetO = 0.65; // maximale Overlay-Opazität begrenzen
+            targetO = 0.9; // stärkere Farbe beim Hover
         });
 
         title.addEventListener('pointermove', (e) => {

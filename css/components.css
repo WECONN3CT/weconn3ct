@@ -753,7 +753,11 @@
   background-clip: text;
   background-blend-mode: screen, screen, normal;
   opacity: var(--spot-o);
-  transition: opacity 0.15s ease-out;
+  /* stärkere Sättigung + Glow */
+  filter: drop-shadow(0 0 22px rgba(139, 92, 246, 0.30))
+          drop-shadow(0 0 14px rgba(99, 102, 241, 0.22))
+          drop-shadow(0 0 10px rgba(30, 202, 211, 0.18));
+  transition: opacity 0.2s ease-out, filter 0.2s ease-out;
   -webkit-mask-image: radial-gradient(
     circle var(--spot-r) at var(--spot-x) var(--spot-y),
     rgba(0,0,0,1) 0%,
