@@ -165,7 +165,7 @@ document.head.appendChild(style);
 
         title.addEventListener('pointerenter', () => {
             targetR = VISIBLE_RADIUS;
-            targetO = 0.9; // stärkere Farbe beim Hover
+            targetO = 1.0; // maximale Sättigung beim Hover
         });
 
         title.addEventListener('pointermove', (e) => {
