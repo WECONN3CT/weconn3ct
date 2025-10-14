@@ -1,6 +1,8 @@
 .hero-title-glass-wrapper {
   position: relative;
   display: inline-block;
+  /* Wichtig für backdrop-filter in Kindern */
+  isolation: isolate;
 }
 
 .hero-title-glass-filter {
@@ -20,22 +22,39 @@
   padding-bottom: 0.1em;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
-  /* Einfache Textfarbe statt Gradient */
-  color: #ffffff;
-  /* SVG Filter für Glaseffekt */
+  
+  /* Transparentes Glas */
+  color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  
+  /* Glaseffekt: Blur des Hintergrunds */
+  backdrop-filter: blur(8px) brightness(1.1);
+  -webkit-backdrop-filter: blur(8px) brightness(1.1);
+  
+  /* Glaskanten */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  text-stroke: 1px rgba(255, 255, 255, 0.2);
+  
+  /* SVG Filter für chromatische Aberration an den Kanten */
   filter: url(#hero-glass-filter);
+  
   /* Subtiler weißer Glow */
-  text-shadow:
-    0 0 20px rgba(255, 255, 255, 0.3),
-    0 0 40px rgba(255, 255, 255, 0.15);
+  text-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 255, 255, 0.05);
+  
+  /* Wichtig für backdrop-filter */
+  position: relative;
+  z-index: 1;
 }
 
 @supports not (filter: url(#hero-glass-filter)) {
   .hero-title-glass {
     filter: none;
-    text-shadow:
-      0 0 20px rgba(255, 255, 255, 0.3),
-      1px 1px 2px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px) brightness(1.1);
+    -webkit-backdrop-filter: blur(8px) brightness(1.1);
+    color: rgba(255, 255, 255, 0.3);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
   }
 }
 
