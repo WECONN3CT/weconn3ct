@@ -721,7 +721,8 @@
   /* Default-Variablen für Spotlight, von JS dynamisch überschrieben */
   --spot-x: 50%;
   --spot-y: 50%;
-  --spot-r: 280px;
+  --spot-r: 0px; /* Start: kein sichtbarer Spot */
+  --spot-o: 0;   /* Start: Overlay unsichtbar */
 }
 
 .hero-subtitle {
@@ -762,6 +763,8 @@
   );
   -webkit-background-clip: text;
   background-clip: text;
+  opacity: var(--spot-o);
+  transition: opacity 0.2s ease;
   /* Maskiere auf Kreis um Cursor-Position */
   -webkit-mask-image: radial-gradient(
     circle var(--spot-r) at var(--spot-x) var(--spot-y),

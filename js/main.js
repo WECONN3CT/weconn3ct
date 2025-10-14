@@ -141,25 +141,39 @@ document.head.appendChild(style);
 
         console.log('✅ Spotlight aktiv');
 
-        // Aktuelle Position für Smooth-Animation
+        // Aktuelle Werte (Start: grau, Spot unsichtbar)
         let currentX = 50;
         let currentY = 50;
+        let currentR = 0;   // px
+        let currentO = 0;   // 0..1
+
+        // Zielwerte
         let targetX = 50;
         let targetY = 50;
+        let targetR = 0;    // px
+        let targetO = 0;    // 0..1
 
-        // Funktion zum Setzen der CSS-Variablen
-        const updatePosition = () => {
+        const VISIBLE_RADIUS = 280; // sichtbarer Standard-Radius
+
+        // CSS-Variablen setzen
+        const updateSpotlight = () => {
             title.style.setProperty('--spot-x', `${currentX}%`);
             title.style.setProperty('--spot-y', `${currentY}%`);
+            title.style.setProperty('--spot-r', `${currentR}px`);
+            title.style.setProperty('--spot-o', `${currentO}`);
         };
 
         // Smooth Animation Loop
         const animate = () => {
-            // Interpoliere zu Zielposition (smooth easing)
+            // Position
             currentX += (targetX - currentX) * 0.15;
             currentY += (targetY - currentY) * 0.15;
-            
-            updatePosition();
+            // Radius
+            currentR += (targetR - currentR) * 0.18;
+            // Opacity
+            currentO += (targetO - currentO) * 0.2;
+
+            updateSpotlight();
             requestAnimationFrame(animate);
         };
         animate();
@@ -171,28 +185,43 @@ document.head.appendChild(style);
             targetY = ((e.clientY - rect.top) / rect.height) * 100;
         });
 
-        // Mouse Leave - zurück zur Mitte
+        // Mouse Enter: Spot einblenden
+        title.addEventListener('mouseenter', () => {
+            targetR = VISIBLE_RADIUS;
+            targetO = 1;
+        });
+
+        // Mouse Leave - zurück zur Mitte, Spot ausblenden
         title.addEventListener('mouseleave', () => {
             targetX = 50;
             targetY = 50;
+            targetR = 0;
+            targetO = 0;
         });
 
         // Touch Support für Mobile
+        title.addEventListener('touchstart', () => {
+            targetR = VISIBLE_RADIUS;
+            targetO = 1;
+        }, { passive: true });
+
         title.addEventListener('touchmove', (e) => {
             e.preventDefault();
             const touch = e.touches[0];
             const rect = title.getBoundingClientRect();
             targetX = ((touch.clientX - rect.left) / rect.width) * 100;
             targetY = ((touch.clientY - rect.top) / rect.height) * 100;
-        });
+        }, { passive: false });
 
         title.addEventListener('touchend', () => {
             targetX = 50;
             targetY = 50;
+            targetR = 0;
+            targetO = 0;
         });
 
         // Initial Position
-        updatePosition();
+        updateSpotlight();
     };
 
     // Initialisierung
