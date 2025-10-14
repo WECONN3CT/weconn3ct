@@ -718,6 +718,10 @@
   margin-bottom: var(--space-6);
   position: relative;
   color: var(--gamma-gray); /* Basis: grau, Spotlight zeigt Verlauf */
+  /* Default-Variablen für Spotlight, von JS dynamisch überschrieben */
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-r: 280px;
 }
 
 .hero-subtitle {
@@ -759,9 +763,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   /* Maskiere auf Kreis um Cursor-Position */
-  --spot-x: 50%;
-  --spot-y: 50%;
-  --spot-r: 280px;
   -webkit-mask-image: radial-gradient(
     circle var(--spot-r) at var(--spot-x) var(--spot-y),
     rgba(0, 0, 0, 1) 0%,
