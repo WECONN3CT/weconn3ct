@@ -715,28 +715,40 @@
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
   position: relative;
-  display: inline-block;
-  padding: var(--space-2) var(--space-6);
-  border-radius: var(--radius-full);
-  
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: var(--glass-blur);
-  backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  box-shadow:
-    0 10px 24px rgba(46, 62, 232, 0.28),
-    0 0 22px rgba(157, 78, 221, 0.46),
-    0 0 16px rgba(46, 62, 232, 0.38),
-    0 0 0 1px rgba(46, 62, 232, 0.20);
-  color: var(--gamma-white);
-  text-shadow: 0 1px 1px rgba(17,24,39,0.25);
+  color: transparent; /* Text selbst wird durchs Glas-Overlay dargestellt */
+  /* Variablen für Spotlight-Overlay (von JS gesteuert) */
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-r: 0px; /* Start: kein Spot */
+  --spot-o: 0;   /* Start: unsichtbar */
+  /* Glas-Tiefe */
+  text-shadow: 0 1px 1px rgba(255,255,255,0.08), 0 8px 22px rgba(0,0,0,0.25);
   
   /* Smooth Rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Maus-Spotlight/Overlay entfernt: reiner Glas-Titel */
+/* Glas-Overlay wie Navbar: nur Text gefüllt, Hintergrund bleibt */
+.hero-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Glasfüllung */
+  background: rgba(255,255,255,0.16);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Blur & Sättigung wie Navbar-Fallback */
+  backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.8) brightness(1.1);
+  /* dezenter Glanz/Glow für Tiefe */
+  text-shadow:
+    0 1px 1px rgba(255,255,255,0.28),
+    0 10px 28px rgba(31,38,135,0.22),
+    0 -1px 0 rgba(255,255,255,0.18);
+}
 
 .hero-subtitle {
   font-size: var(--text-xl);
