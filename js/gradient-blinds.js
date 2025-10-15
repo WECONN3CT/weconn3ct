@@ -138,8 +138,12 @@ class GradientBlinds {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('gradient-blinds');
-  if (!el) return;
+  const el = document.getElementById('gradient-blinds-background');
+  if (!el) {
+    console.error('❌ Container #gradient-blinds-background not found!');
+    return;
+  }
+  console.log('✅ Container found, initializing GradientBlinds...');
   // Startparameter in WECONN3CT CI-Farben
   new GradientBlinds(el, {
     gradientColors: ['#1ECAD3', '#2E3EE8', '#9D4EDD'],
