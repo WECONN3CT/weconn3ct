@@ -160,6 +160,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   vec3 ran = vec3(stripe);
   vec3 col = cir + base - ran;
   col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
+  col = clamp(col, 0.0, 1.0);
   fragColor = vec4(col, 1.0);
 }
 
@@ -279,24 +280,6 @@ void main() {
     if (this.program && typeof this.program.remove === 'function') this.program.remove();
     if (this.mesh && typeof this.mesh.remove === 'function') this.mesh.remove();
     if (this.renderer && typeof this.renderer.destroy === 'function') this.renderer.destroy();
-  }
-
-  /**
-   * Aktualisiert die Gradientenfarben zur Laufzeit
-   * @param {string[]} stops - Array aus Hex-Farben
-   */
-  setGradientColors(stops = []){
-    const { arr, count } = prepStops(stops);
-    this.uniforms.uColorCount.value = count;
-    this.uniforms.uColor0.value = arr[0];
-    this.uniforms.uColor1.value = arr[1];
-    this.uniforms.uColor2.value = arr[2];
-    this.uniforms.uColor3.value = arr[3];
-    this.uniforms.uColor4.value = arr[4];
-    this.uniforms.uColor5.value = arr[5];
-    this.uniforms.uColor6.value = arr[6];
-    this.uniforms.uColor7.value = arr[7];
-    this.options.gradientColors = stops.slice();
   }
 }
 
