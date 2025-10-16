@@ -153,7 +153,9 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   float dn = d / r;
   float spot = (1.0 - 2.0 * pow(dn, uSpotlightSoftness)) * uSpotlightOpacity;
   vec3 cir = vec3(spot);
-  float stripe = fract(uvMod.x * max(uBlindCount, 1.0));
+  // Slanted blinds: project onto angle direction
+  float stripeAxis = uvMod.x * cos(uAngle) + uvMod.y * sin(uAngle);
+  float stripe = fract(stripeAxis * max(uBlindCount, 1.0));
   if (uShineFlip > 0.5) stripe = 1.0 - stripe;
   vec3 ran = vec3(stripe);
   vec3 col = cir + base - ran;
