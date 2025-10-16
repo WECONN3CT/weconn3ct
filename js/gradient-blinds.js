@@ -1,4 +1,4 @@
-import { Renderer, Program, Mesh, Triangle } from 'https://cdn.skypack.dev/ogl';
+import { Renderer, Program, Mesh, Triangle } from 'https://cdn.jsdelivr.net/npm/ogl@0.0.94/dist/ogl.umd.js';
 
 console.log('🎨 GradientBlinds (Original) module loaded');
 
