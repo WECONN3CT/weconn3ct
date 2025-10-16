@@ -157,10 +157,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   float stripeAxis = uvMod.x * cos(uAngle) + uvMod.y * sin(uAngle);
   float stripe = fract(stripeAxis * max(uBlindCount, 1.0));
   if (uShineFlip > 0.5) stripe = 1.0 - stripe;
-  float stripeInv = 1.0 - stripe;
-  // Helle (weiße) Blinds: Richtung Weiß aufhellen statt abdunkeln
-  vec3 col = mix(base, vec3(1.0), stripeInv);
-  col += cir;
+  vec3 ran = vec3(stripe);
+  vec3 col = cir + base - ran;
   col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
   fragColor = vec4(col, 1.0);
 }
@@ -281,6 +279,24 @@ void main() {
     if (this.program && typeof this.program.remove === 'function') this.program.remove();
     if (this.mesh && typeof this.mesh.remove === 'function') this.mesh.remove();
     if (this.renderer && typeof this.renderer.destroy === 'function') this.renderer.destroy();
+  }
+
+  /**
+   * Aktualisiert die Gradientenfarben zur Laufzeit
+   * @param {string[]} stops - Array aus Hex-Farben
+   */
+  setGradientColors(stops = []){
+    const { arr, count } = prepStops(stops);
+    this.uniforms.uColorCount.value = count;
+    this.uniforms.uColor0.value = arr[0];
+    this.uniforms.uColor1.value = arr[1];
+    this.uniforms.uColor2.value = arr[2];
+    this.uniforms.uColor3.value = arr[3];
+    this.uniforms.uColor4.value = arr[4];
+    this.uniforms.uColor5.value = arr[5];
+    this.uniforms.uColor6.value = arr[6];
+    this.uniforms.uColor7.value = arr[7];
+    this.options.gradientColors = stops.slice();
   }
 }
 

@@ -130,7 +130,7 @@ document.head.appendChild(style);
 document.addEventListener('DOMContentLoaded', () => {
     const gradientContainer = document.getElementById('gradient-blinds-bg');
     if (gradientContainer) {
-        new GradientBlinds(gradientContainer, {
+        const gb = new GradientBlinds(gradientContainer, {
             gradientColors: ['#FFFFFF', '#F5F7FF', '#EDEFFF'],
             angle: 120,
             noise: 0,
@@ -140,6 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
             mouseDampening: 0.15,
             mixBlendMode: 'lighten'
         });
+
+        // Bei Hover in der Hero Section auf farbige Stops wechseln, sonst hell/weiß
+        const hero = document.getElementById('hero');
+        if (hero) {
+            hero.addEventListener('pointerenter', () => {
+                gb.setGradientColors(['#FF9FFC', '#5227FF', '#00F5FF']);
+            });
+            hero.addEventListener('pointerleave', () => {
+                gb.setGradientColors(['#FFFFFF', '#F5F7FF', '#EDEFFF']);
+            });
+        }
     }
 });
 
