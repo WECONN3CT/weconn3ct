@@ -159,6 +159,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   if (uShineFlip > 0.5) stripe = 1.0 - stripe;
   vec3 ran = vec3(stripe);
   vec3 col = cir + base - ran;
+  // Noise deaktiviert per uNoise (0.0 => kein Rauschen)
   col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
   fragColor = vec4(col, 1.0);
 }
