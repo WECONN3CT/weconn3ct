@@ -752,7 +752,7 @@
   height: 88px; /* ~30% größer als zuvor */
   border-radius: 0; /* full-bleed bar */
   /* abgedunkeltes Glas: klavierschwarz, leicht transparent */
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.06);
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
