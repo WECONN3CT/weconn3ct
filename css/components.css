@@ -749,7 +749,7 @@
 /* Dünner Glas-Balken unter der Hero-Section */
 .glass-bar {
   width: 100%;
-  height: 88px; /* ~30% größer als zuvor */
+  height: 106px; /* ~20% höher als 88px */
   border-radius: 0; /* full-bleed bar */
   /* abgedunkeltes Glas: klavierschwarz, leicht transparent */
   background: rgba(0, 0, 0, 0.8);
