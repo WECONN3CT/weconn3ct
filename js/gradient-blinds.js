@@ -160,7 +160,6 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   vec3 ran = vec3(stripe);
   vec3 col = cir + base - ran;
   col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
-  col = clamp(col, 0.0, 1.0);
   fragColor = vec4(col, 1.0);
 }
 
