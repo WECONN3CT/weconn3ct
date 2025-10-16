@@ -1,7 +1,8 @@
 // ============================================
-// GAMMA.APP - MAIN JAVASCRIPT
+// GAMMA.APP - MAIN JAVASCRIPT (ES Module)
 // Navigation, Scroll-Animationen, Interaktionen
 // ============================================
+import { GradientBlinds } from './gradient-blinds.js';
 
 // DOM Elements
 const navbar = document.getElementById('navbar');
@@ -124,6 +125,23 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Init Gradient Blinds Background (Hero)
+document.addEventListener('DOMContentLoaded', () => {
+    const gradientContainer = document.getElementById('gradient-blinds-bg');
+    if (gradientContainer) {
+        new GradientBlinds(gradientContainer, {
+            gradientColors: ['#FF9FFC', '#5227FF', '#00F5FF'],
+            angle: 0,
+            noise: 0.3,
+            blindCount: 12,
+            blindMinWidth: 50,
+            spotlightRadius: 0.5,
+            mouseDampening: 0.15,
+            mixBlendMode: 'lighten'
+        });
+    }
+});
 
 // Spotlight-Effekt entfernt
 

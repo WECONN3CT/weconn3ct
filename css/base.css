@@ -183,6 +183,14 @@ section {
   padding: var(--space-20) 0;
 }
 
+/* Hero Background Container for WebGL Gradient Blinds */
+#gradient-blinds-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .section-sm {
   padding: var(--space-12) 0;
 }
