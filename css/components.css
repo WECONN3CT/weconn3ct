@@ -762,6 +762,16 @@
   overflow: hidden; /* Glanzelemente sauber in der Fläche clippen */
 }
 
+/* Gradient Blinds Background Layer */
+.gradient-blinds-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: linear-gradient(0deg, #FF9FFC 0%, #5227FF 100%);
+  mix-blend-mode: lighten;
+}
+
 /* Glanz-/Reflexionseffekte für realistischen Glas-Look */
 /* Abgerundete Glanzelemente in den oberen Ecken */
 .glass-bar::before,
