@@ -136,10 +136,12 @@ document.addEventListener('DOMContentLoaded', () => {
             noise: 0,
             blindCount: 12,
             blindMinWidth: 50,
-            spotlightRadius: 0.5,
+            spotlightRadius: 0.4,
             spotlightOpacity: 0,
             mouseDampening: 0.15,
-            mixBlendMode: 'lighten'
+            mixBlendMode: 'lighten',
+            animSpeed: 0.18,
+            intensity: 0.85
         });
     }
 });
