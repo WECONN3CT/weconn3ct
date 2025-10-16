@@ -124,7 +124,8 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-// Hero-Title: kein Maus-Spotlight mehr (Navbar-ähnlicher Glass-Effekt wird per CSS umgesetzt)
+
+// Spotlight-Effekt entfernt
 
 // ===== ACTIVE NAVIGATION LINK ON SCROLL =====
 const sections = document.querySelectorAll('section[id]');
