@@ -39,8 +39,6 @@ export class GradientBlinds {
       distortAmount: 0,
       shineDirection: 'left',
       mixBlendMode: 'lighten',
-      animSpeed: 0.15,
-      intensity: 1.0,
       ...options
     };
     this.rafId = null;
@@ -84,8 +82,6 @@ uniform float uSpotlightOpacity;
 uniform float uMirror;
 uniform float uDistort;
 uniform float uShineFlip;
-uniform float uAnimSpeed;
-uniform float uIntensity;
 uniform vec3 uColor0;
 uniform vec3 uColor1;
 uniform vec3 uColor2;
@@ -158,12 +154,11 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   float spot = (1.0 - 2.0 * pow(dn, uSpotlightSoftness)) * uSpotlightOpacity;
   vec3 cir = vec3(spot);
   // Slanted blinds: project onto angle direction
-  float stripeAxis = uvMod.x * cos(uAngle) + uvMod.y * sin(uAngle) + iTime * uAnimSpeed;
+  float stripeAxis = uvMod.x * cos(uAngle) + uvMod.y * sin(uAngle);
   float stripe = fract(stripeAxis * max(uBlindCount, 1.0));
   if (uShineFlip > 0.5) stripe = 1.0 - stripe;
   vec3 ran = vec3(stripe);
   vec3 col = cir + base - ran;
-  col = clamp(col * uIntensity, 0.0, 1.0);
   col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
   fragColor = vec4(col, 1.0);
 }
@@ -196,9 +191,7 @@ void main() {
       uColor5: { value: colorArr[5] },
       uColor6: { value: colorArr[6] },
       uColor7: { value: colorArr[7] },
-      uColorCount: { value: colorCount },
-      uAnimSpeed: { value: this.options.animSpeed },
-      uIntensity: { value: this.options.intensity }
+      uColorCount: { value: colorCount }
     };
     this.program = new Program(this.gl, { vertex, fragment, uniforms: this.uniforms });
     const geometry = new Triangle(this.gl);

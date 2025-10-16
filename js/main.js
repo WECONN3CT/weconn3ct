@@ -132,16 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (gradientContainer) {
         new GradientBlinds(gradientContainer, {
             gradientColors: ['#FF9FFC', '#5227FF', '#00F5FF'],
-            angle: 120,
-            noise: 0,
+            angle: 60,
+            noise: 0.3,
             blindCount: 12,
             blindMinWidth: 50,
-            spotlightRadius: 0.4,
-            spotlightOpacity: 0,
+            spotlightRadius: 0.5,
             mouseDampening: 0.15,
-            mixBlendMode: 'lighten',
-            animSpeed: 0.18,
-            intensity: 0.85
+            mixBlendMode: 'lighten'
         });
     }
 });
