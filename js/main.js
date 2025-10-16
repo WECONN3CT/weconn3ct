@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gradientContainer = document.getElementById('gradient-blinds-bg');
     if (gradientContainer) {
         new GradientBlinds(gradientContainer, {
-            gradientColors: ['#FF9FFC', '#5227FF', '#00F5FF'],
+            gradientColors: ['#FFFFFF', '#F5F7FF', '#EDEFFF'],
             angle: 120,
             noise: 0,
             blindCount: 12,

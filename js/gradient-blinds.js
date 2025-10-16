@@ -157,8 +157,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   float stripeAxis = uvMod.x * cos(uAngle) + uvMod.y * sin(uAngle);
   float stripe = fract(stripeAxis * max(uBlindCount, 1.0));
   if (uShineFlip > 0.5) stripe = 1.0 - stripe;
-  vec3 ran = vec3(stripe);
-  vec3 col = cir + base - ran;
+  float stripeInv = 1.0 - stripe;
+  // Helle (weiße) Blinds: Richtung Weiß aufhellen statt abdunkeln
+  vec3 col = mix(base, vec3(1.0), stripeInv);
+  col += cir;
   col += (rand(gl_FragCoord.xy + iTime) - 0.5) * uNoise;
   fragColor = vec4(col, 1.0);
 }
