@@ -752,6 +752,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent; /* für Browser ohne -webkit-text-fill-color */
   display: inline-block;
   animation: shine 5s linear infinite;
 }
@@ -761,8 +762,11 @@
   100% { background-position: center, -100% 0; }
 }
 
-/* Stelle sicher, dass Shiny-Text im Hero die gewünschte Grundfarbe hat */
-.hero .hero-subtitle.shiny-text { color: #b5b5b5a4; }
+/* Stelle sicher, dass die weiße Hero-Subtitle-Farbe den Effekt nicht überdeckt */
+.hero .hero-subtitle.shiny-text { color: transparent; }
+
+/* Kombiniere Fade-In-Up mit Shine, damit shine nicht von Utilities überschrieben wird */
+.shiny-text.animate-fade-in-up { animation: fadeInUp 0.6s ease-out, shine 5s linear infinite; }
 
 .hero-cta {
   display: flex;
