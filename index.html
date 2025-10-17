@@ -281,57 +281,7 @@
                 <p class="text-xl text-muted">Kreativ, vernetzt, in Bad Honnef zuhause</p>
             </div>
 
-            <!-- Flat Horizontal Team Carousel -->
-            <style>
-              .team-carousel-flat{position:relative}
-              .team-carousel-flat .carousel-viewport{overflow:hidden;position:relative}
-              .team-carousel-flat .carousel-track{display:flex;gap:24px;transition:transform .5s ease;will-change:transform;padding:8px 0}
-              .team-card-flat{flex:0 0 var(--slide-width,500px);max-width:500px;background:#000;border-radius:24px;padding:48px;box-shadow:var(--shadow-lg);transition:transform .5s ease,opacity .5s ease;opacity:.4;transform:scale(.9);color:#fff}
-              .team-card-flat.is-active{opacity:1;transform:scale(1)}
-              .team-avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center;margin-bottom:24px}
-              /* Leonardo-Avatar noch weiter rausgezoomt */
-              .team-card-flat[data-index="0"] .team-avatar{width:84px;height:84px;object-position:center 10%}
-              .team-name{font-size:28px;font-weight:700;color:#ffffff;margin-bottom:8px}
-              .team-role{font-size:16px;color:#9ca3af;margin-bottom:24px}
-              .team-desc{font-size:16px;line-height:1.6;color:#d1d5db;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-              .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;background:#fff;border:none;border-radius:9999px;box-shadow:var(--shadow-md);display:grid;place-items:center;color:#6b7280;cursor:pointer;transition:transform .2s ease;z-index:5}
-              .carousel-nav:hover{transform:translateY(-50%) scale(1.05)}
-              .carousel-prev{left:8px}.carousel-next{right:8px}
-              /* responsive slide width */
-              @media (max-width:768px){.team-card-flat{--slide-width:88vw}}
-              @media (min-width:769px) and (max-width:1024px){.team-card-flat{--slide-width:70vw}}
-              @media (min-width:1025px){.team-card-flat{--slide-width:500px}}
-            </style>
-
-            <div class="team-carousel-flat" data-team-carousel-flat>
-                <button class="carousel-nav carousel-prev" type="button" aria-label="Zurück">‹</button>
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-                        <!-- Karte 1 -->
-                        <article class="team-card-flat" data-index="0">
-                            <img class="team-avatar" src="Images/teams/leonardo.png" alt="Leonardo Braun">
-                            <div class="team-name">Leonardo Braun</div>
-                            <div class="team-role">Projekt- & Designmanagement</div>
-                            <p class="team-desc">Verantwortlich für die kreative Leitung und koordiniert alle Projektabläufe mit Präzision und Weitblick.</p>
-                        </article>
-                        <!-- Karte 2 -->
-                        <article class="team-card-flat" data-index="1">
-                            <img class="team-avatar" src="Images/teams/thinesh.png" alt="Thinesh Rajabalah">
-                            <div class="team-name">Thinesh Rajabalah</div>
-                            <div class="team-role">Programmierung</div>
-                            <p class="team-desc">Technisches Mastermind und Experte für sauberen, effizienten Code und moderne Entwicklungsarchitekturen.</p>
-                        </article>
-                        <!-- Karte 3 -->
-                        <article class="team-card-flat" data-index="2">
-                            <img class="team-avatar" src="Images/teams/mentor.png" alt="Mentor Sadiku">
-                            <div class="team-name">Mentor Sadiku</div>
-                            <div class="team-role">Projektabgabe & Wartung</div>
-                            <p class="team-desc">Sorgt für reibungslose Projektübergaben und langfristige Stabilität aller entwickelten Lösungen.</p>
-                        </article>
-                    </div>
-                </div>
-                <button class="carousel-nav carousel-next" type="button" aria-label="Weiter">›</button>
-            </div>
+            
 
             <div class="mt-16">
                 <div class="card card-gradient text-white">
@@ -345,11 +295,7 @@
                 </div>
             </div>
 
-            <!-- 3D Circular Gallery (OGL) -->
-            <div class="w-full -mx-4 md:-mx-8 lg:-mx-16 mt-16">
-                <h3 class="text-3xl font-bold mb-6 text-center text-white px-4">Team Galerie</h3>
-                <div id="team-gallery" class="circular-gallery" style="width:100vw; height:600px; min-height:600px; margin-left:calc(-50vw + 50%);"></div>
-            </div>
+            
         </div>
     </section>
 
@@ -548,7 +494,7 @@
     <!-- JavaScript -->
     <script src="js/animations.js" defer></script>
     <script type="module" src="js/main.js"></script>
-    <script type="module" src="js/circular-gallery.js"></script>
+    
     <script type="module" src="js/blur-text-animation.js"></script>
     <!-- GSAP + ScrollTrigger for high-impact scroll reveal -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
