@@ -712,12 +712,16 @@
   font-weight: var(--font-bold);
   font-family: var(--font-display); /* moderne Display-Schrift */
   line-height: 1.15; /* mehr Luft für Unterlängen (g, j, y) */
-  display: inline-block; /* erlaubt Padding zur Vermeidung von Clipping */
+  display: flex; /* für BlurText-Spans */
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
   padding-bottom: 0.1em; /* zusätzliche Baseline-Luft gegen Abschneiden */
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
   position: relative;
   color: var(--gamma-gray); /* Basis: grau, Spotlight zeigt Verlauf */
+  text-align: center;
 }
 
 /* Optional: bessere Darstellung in Kombination mit BlurText */
