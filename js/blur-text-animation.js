@@ -40,12 +40,12 @@ class BlurText {
       span.style.display = 'inline-block';
       span.style.willChange = 'transform, filter, opacity';
       span.style.opacity = '0';
-      span.style.filter = 'blur(10px)';
-      
+      span.style.filter = 'blur(8px)';
+
       if (this.options.direction === 'top') {
-        span.style.transform = 'translateY(-50px)';
+        span.style.transform = 'translate3d(0,-40px,0)';
       } else {
-        span.style.transform = 'translateY(50px)';
+        span.style.transform = 'translate3d(0,40px,0)';
       }
 
       this.element.appendChild(span);
@@ -85,39 +85,38 @@ class BlurText {
   animate() {
     this.spans.forEach((span, index) => {
       const delay = index * this.options.delay;
-      
-      setTimeout(() => {
-        // Multi-step animation
-        const keyframes = [
-          // Start
-          {
-            opacity: 0,
-            filter: 'blur(10px)',
-            transform: this.options.direction === 'top' ? 'translateY(-50px)' : 'translateY(50px)'
-          },
-          // Mid
-          {
-            opacity: 0.5,
-            filter: 'blur(5px)',
-            transform: this.options.direction === 'top' ? 'translateY(5px)' : 'translateY(-5px)',
-            offset: 0.5
-          },
-          // End
-          {
-            opacity: 1,
-            filter: 'blur(0px)',
-            transform: 'translateY(0px)'
-          }
-        ];
 
-        const timing = {
-          duration: this.options.duration,
-          easing: this.options.easing,
-          fill: 'forwards'
-        };
+      // Multi-step, GPU-friendly (translate3d), sanfter Verlauf
+      const keyframes = [
+        // Start
+        {
+          opacity: 0,
+          filter: 'blur(8px)',
+          transform: this.options.direction === 'top' ? 'translate3d(0,-40px,0)' : 'translate3d(0,40px,0)'
+        },
+        // Mid (sanftes Überschwingen)
+        {
+          opacity: 0.6,
+          filter: 'blur(3px)',
+          transform: this.options.direction === 'top' ? 'translate3d(0,6px,0)' : 'translate3d(0,-6px,0)',
+          offset: 0.55
+        },
+        // End
+        {
+          opacity: 1,
+          filter: 'blur(0px)',
+          transform: 'translate3d(0,0,0)'
+        }
+      ];
 
-        span.animate(keyframes, timing);
-      }, delay);
+      const timing = {
+        duration: this.options.duration,
+        easing: this.options.easing || 'cubic-bezier(0.16, 1, 0.3, 1)',
+        fill: 'forwards',
+        delay
+      };
+
+      span.animate(keyframes, timing);
     });
   }
 }
