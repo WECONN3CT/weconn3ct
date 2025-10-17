@@ -28,6 +28,7 @@ class BlurText {
     this.element.innerHTML = '';
     this.element.style.display = 'flex';
     this.element.style.flexWrap = 'wrap';
+    this.element.style.justifyContent = 'center';
     this.element.style.gap = '0';
 
     // Create spans for each word/letter
