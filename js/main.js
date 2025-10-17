@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (gradientContainer) {
         new GradientBlinds(gradientContainer, {
             gradientColors: ['#5227FF', '#FF9FFC'],
-            angle: 60,
+            angle: 20,
             noise: 0.0,
             blindCount: 12,
             blindMinWidth: 50,
