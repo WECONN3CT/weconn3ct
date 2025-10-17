@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
             noise: 0.0,
             blindCount: 18,
             blindMinWidth: 50,
-            spotlightRadius: 0.5,
+            spotlightRadius: 0.35,
+            spotlightOpacity: 0.5,
             mouseDampening: 0.15,
             mixBlendMode: 'lighten'
         });
