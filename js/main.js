@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gradientColors: ['#5227FF', '#FF9FFC'],
             angle: 20,
             noise: 0.0,
-            blindCount: 12,
+            blindCount: 18,
             blindMinWidth: 50,
             spotlightRadius: 0.5,
             mouseDampening: 0.15,
