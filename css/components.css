@@ -737,6 +737,9 @@
   margin-right: auto;
 }
 
+/* Hero: Untertitel in Weiß auf dunklem Hintergrund */
+.hero .hero-subtitle { color: var(--gamma-white); }
+
 .hero-cta {
   display: flex;
   gap: var(--space-4);
