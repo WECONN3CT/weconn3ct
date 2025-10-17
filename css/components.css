@@ -740,6 +740,30 @@
 /* Hero: Untertitel in Weiß auf dunklem Hintergrund */
 .hero .hero-subtitle { color: var(--gamma-white); }
 
+/* Shiny Text Effekt */
+.shiny-text {
+  /* Basisfarbe als erste Ebene, Highlight als zweite Ebene */
+  background-image:
+    linear-gradient(#b5b5b5a4, #b5b5b5a4),
+    linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%);
+  background-size: 100% 100%, 200% 100%;
+  background-repeat: no-repeat;
+  background-position: center, 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0%   { background-position: center, 100% 0; }
+  100% { background-position: center, -100% 0; }
+}
+
+/* Stelle sicher, dass Shiny-Text im Hero die gewünschte Grundfarbe hat */
+.hero .hero-subtitle.shiny-text { color: #b5b5b5a4; }
+
 .hero-cta {
   display: flex;
   gap: var(--space-4);
