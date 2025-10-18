@@ -1,6 +1,6 @@
 // 3D Circular Gallery – Vanilla JS (OGL)
 // CDN Import (kein Build nötig)
-import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://esm.sh/ogl@1.0.6';
+import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://cdn.skypack.dev/ogl';
 
 // Helpers
 function debounce(func, wait){ let t; return function(...args){ clearTimeout(t); t=setTimeout(()=>func.apply(this,args),wait); }; }
@@ -68,9 +68,12 @@ function initCircularGallery(){
     container=document.createElement('div');
     container.id='team-gallery';
     container.className='circular-gallery';
-    container.style.width='100%';
-    container.style.height='600px';
-    container.style.minHeight='600px';
+    Object.assign(container.style, {
+      width:'100%',
+      height:'600px',
+      minHeight:'600px',
+      position:'relative'
+    });
     // in Section oberhalb der State-of-the-Art Karte einfügen
     const anchor=section.querySelector('.mt-16');
     section.querySelector('.container')?.insertBefore(container, anchor||null);
