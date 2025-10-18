@@ -1,3 +1,7 @@
+/* Minimalistischer Software-Badge mit Shiny-Text */
+.software-badge { display: inline-block; background: #0a0a0a; border: 1px solid #333333; border-radius: 50px; padding: 14px 32px; }
+.software-badge .shiny-text { color: #b5b5b5a4; background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; animation: shine 5s linear infinite; font-size: 16px; font-weight: 400; letter-spacing: 0.5px; }
+@keyframes shine { 0% { background-position: 100%; } 100% { background-position: -100%; } }
 /* Star Border Effekt um Badge */
 .star-border-container { display: inline-block; position: relative; border-radius: 20px; overflow: hidden; padding: 1px 0; }
 .star-border-container .border-gradient-bottom,
