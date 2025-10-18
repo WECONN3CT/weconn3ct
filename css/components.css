@@ -798,6 +798,23 @@
 /* Kombiniere Fade-In-Up mit Shine, damit shine nicht von Utilities überschrieben wird */
 .shiny-text.animate-fade-in-up { animation: fadeInUp 0.6s ease-out, shine 5s linear infinite; }
 
+/* Ensure banner shiny text animates (override with higher specificity and later in cascade) */
+.star-border-container .inner-content .shiny-text {
+  background-image:
+    linear-gradient(#b5b5b5a4, #b5b5b5a4),
+    linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%);
+  background-size: 100% 100%, 200% 100%;
+  background-repeat: no-repeat;
+  background-position: center, 200% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  transform: translateZ(0);
+  animation: shine 5s linear infinite;
+}
+
 .hero-cta {
   display: flex;
   gap: var(--space-4);
