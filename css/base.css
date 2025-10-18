@@ -319,3 +319,12 @@ section {
     padding: var(--space-10) 0;
   }
 }
+
+/* Reduce motion: better accessibility and smoother perceived UX */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
