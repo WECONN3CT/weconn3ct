@@ -5,19 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>WECONN3CT.App | Softwareentwicklung</title>
     <meta name="description" content="WECONN3CT.App entwickelt Apps, Websites und Software – schnell, KI‑gestützt und Made in Germany. 6 Services, Team in Bad Honnef, 15 Mitarbeiter, 4 Teams, 8 Partner, 12 Projekte.">
-    <!-- Lazy load circularGallery.js when #team enters viewport -->
-    <script type="module">
-      const loadCircularGallery = async () => {
-        try { await import('./js/circularGallery.js'); } catch (e) { console.error('Gallery import failed', e); }
-      };
-      const team = document.getElementById('team');
-      if (team) {
-        const io = new IntersectionObserver((entries, obs)=>{
-          if (entries.some(e=>e.isIntersecting)) { loadCircularGallery(); obs.disconnect(); }
-        }, { rootMargin: '200px' });
-        io.observe(team);
-      }
-    </script>
+    <script type="module" src="js/circularGallery.js"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

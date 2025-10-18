@@ -1,6 +1,5 @@
 // 3D Circular Gallery – Vanilla JS (OGL)
-// CDN Import (kein Build nötig)
-import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://esm.sh/ogl@1.0.6';
+import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from 'https://cdn.skypack.dev/ogl@1.0.6';
 
 // Helpers
 function debounce(func, wait){ let t; return function(...args){ clearTimeout(t); t=setTimeout(()=>func.apply(this,args),wait); }; }
@@ -76,35 +75,19 @@ class App{ constructor(container,{items,bend=3,textColor='#ffffff',borderRadius=
 
 // Auto-Init
 function initCircularGallery(){
-  const section=document.getElementById('team'); if(!section) return;
-  let container=document.getElementById('team-gallery');
-  if(!container){
-    container=document.createElement('div');
-    container.id='team-gallery';
-    container.className='circular-gallery';
-    Object.assign(container.style, {
-      width:'100%',
-      height:'600px',
-      minHeight:'600px',
-      position:'relative'
-    });
-    // in Section oberhalb der State-of-the-Art Karte einfügen
-    const anchor=section.querySelector('.mt-16');
-    section.querySelector('.container')?.insertBefore(container, anchor||null);
-  }
-  if(container.__galleryInit) return; container.__galleryInit=true;
+  console.log('🚀 CircularGallery.js wird geladen...');
+  const container=document.getElementById('team-gallery');
+  if(!container){ console.error('❌ Container #team-gallery nicht gefunden!'); return; }
 
   const items=[
-    { image:'Images/teams/leonardo.png', name:'Leonardo Braun', position:'Projekt- & Designmanagement' },
-    { image:'Images/teams/thinesh.png',  name:'Thinesh Rajabalah', position:'Programmierung' },
-    { image:'Images/teams/mentor.png',   name:'Mentor Sadiku', position:'Projektabgabe & Wartung' }
+    { image:'https://i.pravatar.cc/800?img=12', name:'Leonardo Braun', position:'Projekt- & Designmanagement' },
+    { image:'https://i.pravatar.cc/800?img=33', name:'Thinesh Rajabalah', position:'Programmierung' },
+    { image:'https://i.pravatar.cc/800?img=68', name:'Mentor Sadiku', position:'Projektabgabe & Wartung' }
   ];
 
   const app=new App(container,{ items, bend:3, textColor:'#ffffff', borderRadius:0.05, scrollSpeed:2, scrollEase:0.05 });
   window.__teamGallery=app;
-
-  // Cleanup
-  window.addEventListener('beforeunload', ()=>{ try{ app.destroy(); }catch(_e){} });
+  window.addEventListener('beforeunload', ()=>{ try{ app.destroy(); }catch(e){ console.error('Cleanup-Fehler', e); } });
 }
 
 if(document.readyState==='loading'){
